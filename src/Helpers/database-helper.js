@@ -1,3 +1,4 @@
+/*
 export default function createTable(){
     const { Client } = require('pg');
     delete pg.native;
@@ -13,5 +14,5 @@ export default function createTable(){
         client.end();
       });
 }
-
+*/
 

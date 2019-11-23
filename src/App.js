@@ -5,7 +5,7 @@ import createTable from './Helpers/database-helper';
 
 function App() {
 
-  createTable();
+  //createTable();
 
   return (
     <div className="App">
