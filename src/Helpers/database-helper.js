@@ -7,7 +7,7 @@ export default function createTable(){
       
       client.connect();
       
-      client.query('create table patients ( id SERIAL PRIMARY KEY,familyname varchar(128) NOT NULL,givenname varchar(128) NOT NULL,phonenumber varchar(32));', (err, res) => {
+      client.query('create table patients ( id SERIAL PRIMARY KEY, familyname varchar(128) NOT NULL, givenname varchar(128) NOT NULL, phonenumber varchar(32));', (err, res) => {
         if (err) throw err;
         client.end();
       });
