@@ -1,5 +1,5 @@
 import React from 'react';
-import picture from './output_2.png';
+import picture from './Tanaka_logo.png';
 import './App.css';
 import createTable from './Helpers/database-helper';
 
