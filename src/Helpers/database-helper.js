@@ -1,4 +1,6 @@
 const { Client } = require('pg');
+delete pg.native;
+
 export default function createTable(){
     const client = new Client({
         connectionString: "ec2-54-195-252-243.eu-west-1.compute.amazonaws.com",
