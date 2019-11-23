@@ -1,3 +1,2 @@
-# Eczema-Segmentation-App
-Creating an android app to implement a segmentation algorithm for Eczema images.
-...and other fun tales
+# Eczema Database Web App
+Creating a web app interface for uploading & managing patients' scored Eczema images 
