@@ -1,8 +1,6 @@
-/*
-const { Client } = require('pg');
-delete pg.native;
-
 export default function createTable(){
+    const { Client } = require('pg');
+    delete pg.native;
     const client = new Client({
         connectionString: "ec2-54-195-252-243.eu-west-1.compute.amazonaws.com",
         ssl: true,
@@ -15,5 +13,5 @@ export default function createTable(){
         client.end();
       });
 }
-*/
+
 
