@@ -5,7 +5,7 @@ import createTable from './Helpers/database-helper';
 
 class App extends Component {
   componentDidMount(){
-    createTable();
+    //createTable();
   }
 
   render () {
