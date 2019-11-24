@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import {AppProvider, Page} from '@shopify/polaris';
 import DataTable from './components/DataTable';
 import './App.css';
 
