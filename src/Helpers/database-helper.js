@@ -1,6 +1,6 @@
-const { Client } = require('pg');
-
 export default function createTable(){
+    const { Client } = require('pg');
+    delete pg.native; 
     const client = new Client({
         connectionString: process.env.DATABASE_URL,
         ssl: true,
