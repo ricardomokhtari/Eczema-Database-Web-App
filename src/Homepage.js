@@ -2,6 +2,12 @@ import React, { Component } from 'react';
 import DataTable from './components/DataTable';
 import './App.css';
 import Search from './components/Search';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 
 class Homepage extends Component {
   render() {
@@ -22,7 +28,11 @@ class Homepage extends Component {
         '65',
         '24/11/2019',
         <div class="btn-group" role="group" aria-label="Basic example">
-          <button type="button" class="btn btn-primary">View</button>
+          <Router>
+            <Link to="/viewpage">
+              <button type="button" class="btn btn-primary">View</button>
+            </Link>
+          </Router>
           <button type="button" class="btn btn-primary">Upload</button>
         </div>
       ],
