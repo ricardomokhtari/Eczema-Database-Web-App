@@ -2,22 +2,14 @@ import React, { Component } from 'react';
 import picture from './Tanaka_logo.png';
 import './App.css';
 import createTable from './Helpers/database-helper';
+import DataTable from './components/DataTable';
 
 class App extends Component {
-  componentDidMount(){
-    //createTable();
-  }
-
-  // testing new branch
 
   render () {
     return (
       <React.Fragment>
-        <div className="App">
-          <header className="App-header">
-            <img src={picture} className="App-logo" alt="logo" />
-          </header>
-        </div>
+        <DataTable/>
       </React.Fragment>
     );
   }
