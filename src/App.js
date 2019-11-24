@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import DataTable from './components/DataTable';
 import './App.css';
+import Search from './components/Search';
 
 class App extends Component {
   render() {
@@ -25,6 +26,9 @@ class App extends Component {
 
     return (
       <React.Fragment>
+        <div>
+          <Search/>
+        </div>
         <div className = "App-header">
           <DataTable headings = {headings} rows = {rows}></DataTable>
         </div>
