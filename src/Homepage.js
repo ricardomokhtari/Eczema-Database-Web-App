@@ -3,9 +3,8 @@ import DataTable from './components/DataTable';
 import './App.css';
 import Search from './components/Search';
 
-class App extends Component {
+class Homepage extends Component {
   render() {
-
     const headings = [
       'Patient id',
       'Sex',
@@ -119,4 +118,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default Homepage;
