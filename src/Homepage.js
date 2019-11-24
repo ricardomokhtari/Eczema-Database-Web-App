@@ -28,7 +28,7 @@ class Homepage extends Component {
         '65',
         '24/11/2019',
         <div class="btn-group" role="group" aria-label="Basic example">
-          <Router>
+          <Router forceRefresh = {true}>
             <Link to="/viewpage">
               <button type="button" class="btn btn-primary">View</button>
             </Link>
