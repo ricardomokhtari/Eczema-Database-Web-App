@@ -1,19 +1,22 @@
-import React from 'react';
+import React, { Component } from 'react';
 import picture from './Tanaka_logo.png';
 import './App.css';
 import createTable from './Helpers/database-helper';
 
-function App() {
+class App extends Component {
+  componentDidMount(){
+    createTable();
+  }
 
-  createTable();
-
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={picture} className="App-logo" alt="logo" />
-      </header>
-    </div>
-  );
+  render () {
+    <React.Fragment>
+      <div className="App">
+        <header className="App-header">
+          <img src={picture} className="App-logo" alt="logo" />
+        </header>
+      </div>
+    </React.Fragment>
+  }
 }
-
+ 
 export default App;
