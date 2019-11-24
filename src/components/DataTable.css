@@ -1,11 +1,25 @@
 .Table {
     border-spacing: 0px;
-    background: white;
     box-shadow: 0 1px 0 0 rgba(22, 29, 37, 0.05);
   }
-  
+
+  /* 298EAD */
+
+  .Heading {
+    border: 2px solid #298EAD;
+    background: #298EAD;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .Body {
+    border: 2px solid white;
+    background: white;
+    padding: 20px;
+    text-align: center;
+  }
+
   .Cell {
-    border: 2px solid grey;
     padding: 20px;
     text-align: center;
   }
