@@ -9,13 +9,15 @@ class App extends Component {
   }
 
   render () {
-    <React.Fragment>
-      <div className="App">
-        <header className="App-header">
-          <img src={picture} className="App-logo" alt="logo" />
-        </header>
-      </div>
-    </React.Fragment>
+    return (
+      <React.Fragment>
+        <div className="App">
+          <header className="App-header">
+            <img src={picture} className="App-logo" alt="logo" />
+          </header>
+        </div>
+      </React.Fragment>
+    );
   }
 }
  
