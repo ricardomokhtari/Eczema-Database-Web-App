@@ -65,11 +65,9 @@ class App extends Component {
     ];
 
     return (
-      <AppProvider>
-        <Page title="Data table">
-          <DataTable headings={headings} rows={rows} />
-        </Page>
-      </AppProvider>
+      <React.Fragment>
+        <DataTable headings = {headings} rows = {rows}></DataTable>
+      </React.Fragment>
     );
   }
 }
