@@ -25,7 +25,9 @@ class App extends Component {
 
     return (
       <React.Fragment>
-        <DataTable headings = {headings} rows = {rows}></DataTable>
+        <div className = "App">
+          <DataTable headings = {headings} rows = {rows}></DataTable>
+        </div>
       </React.Fragment>
     );
   }
