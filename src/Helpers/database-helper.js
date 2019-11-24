@@ -1,18 +1,16 @@
-/*
-export default function createTable(){
-    const { Client } = require('pg');
-    delete pg.native;
-    const client = new Client({
-        connectionString: "ec2-54-195-252-243.eu-west-1.compute.amazonaws.com",
-        ssl: true,
-      });
-      
-      client.connect();
-      
-      client.query('create table patients ( id SERIAL PRIMARY KEY, familyname varchar(128) NOT NULL, givenname varchar(128) NOT NULL, phonenumber varchar(32));', (err, res) => {
-        if (err) throw err;
-        client.end();
-      });
-}
-*/
+const { Client } = require('pg');
 
+const client = new Client({
+  connectionString: process.env.DATABASE_URL,
+  ssl: true,
+});
+
+client.connect();
+
+client.query('SELECT table_schema,table_name FROM information_schema.tables;', (err, res) => {
+  if (err) throw err;
+  for (let row of res.rows) {
+    console.log(JSON.stringify(row));
+  }
+  client.end();
+});
