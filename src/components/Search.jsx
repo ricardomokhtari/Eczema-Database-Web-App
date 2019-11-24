@@ -5,7 +5,7 @@ class Search extends Component {
         return (
             <div>
                 <span>
-                    <input class="form-control" type="text" placeholder="Search" aria-label="Search"></input>
+                    <input class="form-control" type="text" width="50px" placeholder="Search" aria-label="Search"></input>
                     <button className = "btn btn-success btn-m m-2">Add New Patient</button>
                 </span>
             </div>
