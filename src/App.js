@@ -1,24 +1,27 @@
 import React, { Component } from 'react';
-import picture from './Tanaka_logo.png';
-import './App.css';
-import createTable from './Helpers/database-helper';
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+  } from "react-router-dom";
+import Homepage from './Homepage';
+import ViewPage from './components/viewpage';
 
 class App extends Component {
-  componentDidMount(){
-    //createTable();
-  }
-
-  render () {
-    return (
-      <React.Fragment>
-        <div className="App">
-          <header className="App-header">
-            <img src={picture} className="App-logo" alt="logo" />
-          </header>
-        </div>
-      </React.Fragment>
-    );
-  }
-}
+    render () {
+        return (
+            <Router>
+                <Switch>
+                    <Route exact path="/" component = {Homepage}>
+                        <Homepage />
+                    </Route>
+                    <Route path="/viewpage" component = {ViewPage}>
+                        <ViewPage />
+                    </Route>
+                </Switch>
+            </Router>
+          );
+        }
+    }
  
 export default App;

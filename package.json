@@ -7,11 +7,15 @@
     "node": "12.10.0"
   },
   "dependencies": {
+    "@version/react-router-v3": "^1.0.0",
+    "bootstrap": "^4.3.1",
     "i": "^0.3.6",
     "pg": "^7.14.0",
     "pg-native": "^3.0.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
+    "react-router": "^5.1.2",
+    "react-router-dom": "^5.1.2",
     "react-scripts": "3.2.0"
   },
   "scripts": {

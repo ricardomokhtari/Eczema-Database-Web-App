@@ -1,9 +1,9 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
+.TopBar{
+  background-color: #60BDD9;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 20px;
+  scroll-padding-right: 20px;
 }
 
 .App-header {
@@ -12,11 +12,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  /* justify-content: center; */
   font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #09d3ac;
+  color: black;
 }
