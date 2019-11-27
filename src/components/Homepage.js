@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import DataTable from './DataTable';
-import './App.css';
+import './Homepage.css';
 import Search from './Search';
 import {
   BrowserRouter as Router,
