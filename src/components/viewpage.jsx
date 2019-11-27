@@ -30,7 +30,6 @@ function ViewPage() {
                     </NavItem>
                 </SideNav.Nav>
             </SideNav>
-
         </React.Fragment>
 
     );

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import DataTable from './components/DataTable';
+import DataTable from './DataTable';
 import './App.css';
-import Search from './components/Search';
+import Search from './Search';
 import {
   BrowserRouter as Router,
   Switch,

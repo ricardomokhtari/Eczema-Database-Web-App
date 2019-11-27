@@ -4,7 +4,7 @@ import {
     Switch,
     Route,
   } from "react-router-dom";
-import Homepage from './Homepage';
+import Homepage from './components/Homepage';
 import ViewPage from './components/viewpage';
 
 class App extends Component {
