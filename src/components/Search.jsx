@@ -8,7 +8,7 @@ class Search extends Component {
                         <input class="form-control" type="text" placeholder="Search" aria-label="Search"></input>
                     </div>                
                     <span className="input-group-btn">
-                    <button className="btn btn-success">Add New Patient</button>
+                    <button className="btn btn-info btn-m">Add New Patient</button>
                 </span>
             </div>
         );
