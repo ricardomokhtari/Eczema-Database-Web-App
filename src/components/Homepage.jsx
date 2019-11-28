@@ -33,7 +33,11 @@ class Homepage extends Component {
               <button type="button" class="btn btn-primary">View</button>
             </Link>
           </Router>
-          <button type="button" class="btn btn-primary">Upload</button>
+          <Router forceRefresh = {true}>
+            <Link to="/upload">
+              <button type="button" class="btn btn-primary">Upload</button>
+            </Link>
+          </Router>
         </div>
       ],
       [

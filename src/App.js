@@ -6,6 +6,7 @@ import {
   } from "react-router-dom";
 import Homepage from './components/Homepage';
 import ViewPage from './components/viewpage';
+import UploadPage from './components/UploadPage';
 
 class App extends Component {
     render () {
@@ -17,6 +18,9 @@ class App extends Component {
                     </Route>
                     <Route path="/viewpage" component = {ViewPage}>
                         <ViewPage />
+                    </Route>
+                    <Route path="/upload" component = {UploadPage}>
+                        <UploadPage/>
                     </Route>
                 </Switch>
             </Router>
