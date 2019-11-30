@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import SideNav, { Toggle, Nav, NavItem, NavIcon, NavText } from '@trendmicro/react-sidenav';
 import './SideNav.css';
+import './UploadPage.css';
 
 class UploadPage extends Component {
     state = {
@@ -20,11 +21,25 @@ class UploadPage extends Component {
                     marginLeft: expanded ? 240 : 64,
                     padding: '15px 20px 0 20px'
                 }}>
-                    <p>Hello World</p>
+                    <div>
+                        <h1>Upload</h1>
+                    </div>
+                    <div className = "Inline">
+                        <h5>Date Taken</h5>
+                        <input type="text" placeholder = "eg. 24/11/2019"/>
+                    </div>
+                    <div className = "Inline">
+                        <h5>Region</h5>
+                        <input type="text" placeholder = "eg. Head"/>
+                    </div>
+                    <div className = "Inline">
+                        <h5>Score:</h5>
+                    </div>
+                    <div>
+                        <button className = "btn btn-info m-2">Upload</button>
+                    </div>
+                </div>
 
-
-
-                    
                 <div>
                     <SideNav onToggle = {this.onToggle}>
                         <SideNav.Toggle />
@@ -47,7 +62,6 @@ class UploadPage extends Component {
                             </NavItem>
                         </SideNav.Nav>
                     </SideNav>
-                </div>
                 </div>
                 
         </React.Fragment>
