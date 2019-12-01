@@ -2,6 +2,12 @@ import React, { Component } from 'react';
 import SideNav, { Toggle, Nav, NavItem, NavIcon, NavText } from '@trendmicro/react-sidenav';
 import './SideNav.css';
 import './UploadPage.css';
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link
+  } from "react-router-dom";
 
 class UploadPage extends Component {
     state = {
@@ -26,11 +32,11 @@ class UploadPage extends Component {
                     </div>
                     <div className = "Inline">
                         <h5>Date Taken</h5>
-                        <input type="text" placeholder = "eg. 24/11/2019"/>
+                        <input className = "Input" type="text" placeholder = "eg. 24/11/2019"/>
                     </div>
                     <div className = "Inline">
                         <h5>Region</h5>
-                        <input type="text" placeholder = "eg. Head"/>
+                        <input className = "Input" type="text" placeholder = "eg. Head"/>
                     </div>
                     <div className = "Inline">
                         <h5>Score:</h5>

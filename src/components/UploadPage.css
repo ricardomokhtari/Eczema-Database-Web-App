@@ -1,3 +1,7 @@
 .Inline {
     display: flex;
 }
+
+.Input {
+    margin-left: 20px;
+}
