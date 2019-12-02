@@ -1,11 +1,5 @@
 import React, { Component } from 'react';
 import './NewPatientPage.css';
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    Link
-  } from "react-router-dom";
 
 class UploadPage extends Component {
     render() {
