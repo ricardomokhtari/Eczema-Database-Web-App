@@ -7,7 +7,7 @@ class NewPatientPage extends Component {
             <React.Fragment>
               <div
                style={{
-                  marginLeft: expanded ? 240 : 64,
+                  marginLeft: 64,
                   padding: '15px 20px 0 20px'
               }}>
                 <div>
