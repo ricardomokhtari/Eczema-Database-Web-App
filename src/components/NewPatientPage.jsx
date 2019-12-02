@@ -3,7 +3,6 @@ import './NewPatientPage.css';
 
 class UploadPage extends Component {
     render() {
-        const {expanded} = this.state;
         return (
             <React.Fragment>
                     <div>
