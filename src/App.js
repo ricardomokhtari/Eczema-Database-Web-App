@@ -24,7 +24,7 @@ class App extends Component {
                         <UploadPage/>
                     </Route>
                     <Route path="/newpatient" component = {NewPatientPage}>
-                        <UploadPage/>
+                        <NewPatientPage/>
                     </Route>
                 </Switch>
             </Router>
