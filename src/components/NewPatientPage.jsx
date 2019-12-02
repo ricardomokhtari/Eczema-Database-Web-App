@@ -31,7 +31,6 @@ class UploadPage extends Component {
                     <div>
                         <button className = "btn btn-info m-2">Add Patient</button>
                     </div>
-                </div>
               </React.Fragment>
         );
     }
