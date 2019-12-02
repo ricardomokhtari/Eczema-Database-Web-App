@@ -22,10 +22,13 @@ class App extends Component {
                     <Route path="/upload" component = {UploadPage}>
                         <UploadPage/>
                     </Route>
+                    <Route path="/newpatient" component = {NewPatientPage}>
+                        <UploadPage/>
+                    </Route>
                 </Switch>
             </Router>
           );
         }
     }
- 
+
 export default App;
