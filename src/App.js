@@ -7,6 +7,7 @@ import {
 import Homepage from './components/Homepage';
 import ViewPage from './components/viewpage';
 import UploadPage from './components/UploadPage';
+import NewPatientPage from './components/NewPatientPage';
 
 class App extends Component {
     render () {
