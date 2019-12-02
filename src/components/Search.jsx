@@ -1,14 +1,18 @@
 import React, { Component } from 'react';
 
 class Search extends Component {
-    render() { 
+    render() {
         return (
             <div className="input-group">
                     <div class="active-purple-3 active-purple-4 mb-4">
                         <input class="form-control" type="text" placeholder="Search" aria-label="Search"></input>
-                    </div>                
+                    </div>
                     <span className="input-group-btn">
-                    <button className="btn btn-info btn-m">Add New Patient</button>
+                    <Router forceRefresh = {true}>
+                      <Link to="/NewPatientPage">
+                        <button className="btn btn-info btn-m">Add New Patient</button>
+                      </Link>
+                    </Router>
                 </span>
             </div>
         );
