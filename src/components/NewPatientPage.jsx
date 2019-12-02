@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './NewPatientPage.css';
 
-class UploadPage extends Component {
+class NewPatientPage extends Component {
     render() {
         return (
             <React.Fragment>
