@@ -4,6 +4,7 @@ import './SideNav.css';
 import './UploadPage.css';
 import DataTable from './DataTable';
 import './DataTable.css';
+import FileDialogue from './FileDialogue';
 
 class UploadPage extends Component {
     state = {
@@ -97,7 +98,7 @@ class UploadPage extends Component {
                         <h5>Score: {this.state.score}</h5>
                     </div>
                     <div>
-                        <button className = "btn btn-info m-2">Upload</button>
+                        <FileDialogue></FileDialogue>                  
                     </div>
                 </div>
 
