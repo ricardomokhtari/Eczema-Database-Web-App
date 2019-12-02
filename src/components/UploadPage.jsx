@@ -4,24 +4,39 @@ import './SideNav.css';
 import './UploadPage.css';
 import DataTable from './DataTable';
 import './DataTable.css';
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    Link
-  } from "react-router-dom";
 
 class UploadPage extends Component {
     state = {
-        expanded: false
+        expanded: false,
+        score: "Enter fields to calculate"
     };
+
+    constructor(props){
+        super(props);
+        this.calculateScore = this.calculateScore.bind(this);
+    }
 
     onToggle = (expanded) => {
         this.setState({ expanded: expanded });
     };
 
-    
-    
+    calculateScore(){
+        const Erythema = parseInt(document.getElementById("Erythema").value);
+        const Edema = parseInt(document.getElementById("Edema").value);
+        const Excoriation = parseInt(document.getElementById("Excoriation").value);
+        const Lichenification = parseInt(document.getElementById("Lichenification").value);
+        const AreaScore = parseInt(document.getElementById("AreaScore").value);
+
+        if (Erythema >= 0 && Erythema <= 3 && Edema >= 0 && Edema <= 3 && Excoriation >= 0 && Excoriation <= 3
+            && Lichenification >= 0 && Lichenification <= 3 && AreaScore >= 0 && Erythema <= 6) {
+                const total = Erythema + Edema + Excoriation + Lichenification + AreaScore;
+                this.setState({score: total});
+        } else {
+            this.setState({score: "A value is incorrect"});
+        }
+        
+    }
+
     render() { 
         const {expanded} = this.state;
 
@@ -31,24 +46,25 @@ class UploadPage extends Component {
             'Excoriation',
             'Lichenification',
             'Area Score',
+            ''
         ];
       
         const rows = [
             [
                 <div>
-                    <input maxLength = "1" className = "TableInput" type="text"></input>
+                    <input id="Erythema" maxLength = "1" className = "TableInput" type="text"></input>
                 </div>,
                 <div>
-                    <input maxLength = "1" className = "TableInput" type="text"></input>
+                    <input id="Edema" maxLength = "1" className = "TableInput" type="text"></input>
                 </div>,
                 <div>
-                    <input  maxLength = "1" className = "TableInput" type="text"></input>
+                    <input id="Excoriation" maxLength = "1" className = "TableInput" type="text"></input>
                 </div>,
                 <div>
-                    <input maxLength = "1" className = "TableInput" type="text"></input>
+                    <input id="Lichenification" maxLength = "1" className = "TableInput" type="text"></input>
                 </div>,
                 <div>
-                    <input maxLength = "1" className = "TableInput" type="text"></input>
+                    <input id="AreaScore" maxLength = "1" className = "TableInput" type="text"></input>
                 </div>
             ]
         ];
@@ -74,11 +90,14 @@ class UploadPage extends Component {
                     <div>
                         <DataTable headings = {headings} rows = {rows}></DataTable>
                     </div>
+                    <div>
+                        <button onClick = {this.calculateScore} className = "btn btn-info m-2">Calculate total score</button>
+                    </div>
                     <div className = "Inline">
-                        <h5>Score:</h5>
+                        <h5>Score: {this.state.score}</h5>
                     </div>
                     <div>
-                        <input type="button" value="Choose Files!" onclick="document.getElementById('fileInput').click();" />                    
+                        <button className = "btn btn-info m-2">Upload</button>
                     </div>
                 </div>
 
