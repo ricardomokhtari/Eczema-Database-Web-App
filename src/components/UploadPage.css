@@ -5,3 +5,20 @@
 .Input {
     margin-left: 20px;
 }
+
+.TableInput {
+    margin-left: 20px;
+    width: 30px;
+    text-align: center;
+}
+
+.App-header {
+    background-color: #60BDD9;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: center; */
+    font-size: calc(10px + 2vmin);
+    color: black;
+  }
