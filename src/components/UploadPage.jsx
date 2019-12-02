@@ -3,7 +3,7 @@ import SideNav, { Toggle, Nav, NavItem, NavIcon, NavText } from '@trendmicro/rea
 import './SideNav.css';
 
 class UploadPage extends Component {
-    render() { 
+    render() {
         return (
             <React.Fragment>
             <SideNav
@@ -35,5 +35,5 @@ class UploadPage extends Component {
         );
     }
 }
- 
+
 export default UploadPage;

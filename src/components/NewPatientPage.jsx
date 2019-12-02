@@ -36,4 +36,4 @@ class NewPatientPage extends Component {
     }
 }
 
-export default UploadPage;
+export default NewPatientPage;
