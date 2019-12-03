@@ -9,7 +9,7 @@ import FileDialogue from './FileDialogue';
 class UploadPage extends Component {
     state = {
         expanded: false,
-        score: "Enter fields to calculate"
+        score: ""
     };
 
     constructor(props){
@@ -23,12 +23,12 @@ class UploadPage extends Component {
     };
 
     calculateScore(){
-        const Erythema = parseInt(document.getElementById("Erythema").value);
-        const Edema = parseInt(document.getElementById("Edema").value);
-        const Excoriation = parseInt(document.getElementById("Excoriation").value);
-        const Lichenification = parseInt(document.getElementById("Lichenification").value);
-        const AreaScore = parseInt(document.getElementById("AreaScore").value);
-
+        const Erythema = parseInt(this.getRadioVal(document.getElementById('ErythemaInput'), 'ErythemaScoreInput'));
+        const Edema = parseInt(this.getRadioVal(document.getElementById('EdemaInput'), 'EdemaScoreInput'));
+        const Excoriation = parseInt(this.getRadioVal(document.getElementById('ExcoriationInput'), 'ExcoriationScoreInput'));
+        const Lichenification = parseInt(this.getRadioVal(document.getElementById('LichenificationInput'), 'LichenificationScoreInput'));
+        const AreaScore = parseInt(this.getRadioVal(document.getElementById('AreaScoreInput'), 'AreaScoreScoreInput'));
+        
         if (Erythema >= 0 && Erythema <= 3 && Edema >= 0 && Edema <= 3 && Excoriation >= 0 && Excoriation <= 3
             && Lichenification >= 0 && Lichenification <= 3 && AreaScore >= 0 && Erythema <= 6) {
                 const total = Erythema + Edema + Excoriation + Lichenification + AreaScore;
@@ -36,8 +36,23 @@ class UploadPage extends Component {
         } else {
             this.setState({score: "A value is incorrect"});
         }
-        
     }
+
+    getRadioVal(form, name) {
+        var val;
+        // get list of radio buttons with specified name
+        var radios = form.elements[name];
+        
+        // loop through list of radio buttons
+        for (var i=0, len=radios.length; i<len; i++) {
+            if ( radios[i].checked ) { // radio checked?
+                val = radios[i].value; // if so, hold its value in val
+                break; // and break out of for loop
+            }
+        }
+        return val; // return value of checked radio or undefined if none checked
+    }
+    
 
     // template POST requst, untested
     handleUpload() {
@@ -64,110 +79,108 @@ class UploadPage extends Component {
             'Excoriation',
             'Lichenification',
             'Area Score',
-            ''
         ];
       
         const rows = [
             [
-                <div>
+                <form id="ErythemaInput">
                     <div class="custom-control custom-radio">
-                        <input type="radio" class="custom-control-input" id="defaultInline0" name="groupOfDefaultRadios"/>
-                        <label class="custom-control-label" for="defaultInline0">0</label>
+                        <input type="radio" class="custom-control-input" id="Erythema0" value = "0" name="ErythemaScoreInput"/>
+                        <label class="custom-control-label" for="Erythema0">0</label>
                     </div>
                     <div class="custom-control custom-radio">
-                        <input type="radio" class="custom-control-input" id="defaultInline1" name="groupOfDefaultRadios"/>
-                        <label class="custom-control-label" for="defaultInline1">1</label>
+                        <input type="radio" class="custom-control-input" id="Erythema1" value = "1" name="ErythemaScoreInput"/>
+                        <label class="custom-control-label" for="Erythema1">1</label>
                     </div>
                     <div class="custom-control custom-radio">
-                        <input type="radio" class="custom-control-input" id="defaultInline2" name="groupOfDefaultRadios"/>
-                        <label class="custom-control-label" for="defaultInline2">2</label>
-                    </div>
-
-                    <div class="custom-control custom-radio">
-                        <input type="radio" class="custom-control-input" id="defaultInline3" name="groupOfDefaultRadios"/>
-                        <label class="custom-control-label" for="defaultInline3">3</label>
-                    </div>
-                </div>,
-                <div>
-                    <div class="custom-control custom-radio">
-                        <input type="radio" class="custom-control-input" id="defaultInline0" name="groupOfDefaultRadios"/>
-                        <label class="custom-control-label" for="defaultInline0">0</label>
+                        <input type="radio" class="custom-control-input" id="Erythema2" value = "2" name="ErythemaScoreInput"/>
+                        <label class="custom-control-label" for="Erythema2">2</label>
                     </div>
                     <div class="custom-control custom-radio">
-                        <input type="radio" class="custom-control-input" id="defaultInline1" name="groupOfDefaultRadios"/>
-                        <label class="custom-control-label" for="defaultInline1">1</label>
+                        <input type="radio" class="custom-control-input" id="Erythema3" value = "3" name="ErythemaScoreInput"/>
+                        <label class="custom-control-label" for="Erythema3">3</label>
+                    </div>
+                </form>,
+                <form id="EdemaInput">
+                    <div class="custom-control custom-radio">
+                        <input type="radio" class="custom-control-input" id="Edema0" value = "0" name="EdemaScoreInput"/>
+                        <label class="custom-control-label" for="Edema0">0</label>
                     </div>
                     <div class="custom-control custom-radio">
-                        <input type="radio" class="custom-control-input" id="defaultInline2" name="groupOfDefaultRadios"/>
-                        <label class="custom-control-label" for="defaultInline2">2</label>
+                        <input type="radio" class="custom-control-input" id="Edema1" value = "1" name="EdemaScoreInput"/>
+                        <label class="custom-control-label" for="Edema1">1</label>
                     </div>
                     <div class="custom-control custom-radio">
-                        <input type="radio" class="custom-control-input" id="defaultInline3" name="groupOfDefaultRadios"/>
-                        <label class="custom-control-label" for="defaultInline3">3</label>
-                    </div>
-                </div>,
-                <div>
-                    <div class="custom-control custom-radio">
-                        <input type="radio" class="custom-control-input" id="defaultInline0" name="groupOfDefaultRadios"/>
-                        <label class="custom-control-label" for="defaultInline0">0</label>
+                        <input type="radio" class="custom-control-input" id="Edema2" value = "2" name="EdemaScoreInput"/>
+                        <label class="custom-control-label" for="Edema2">2</label>
                     </div>
                     <div class="custom-control custom-radio">
-                        <input type="radio" class="custom-control-input" id="defaultInline1" name="groupOfDefaultRadios"/>
-                        <label class="custom-control-label" for="defaultInline1">1</label>
+                        <input type="radio" class="custom-control-input" id="Edema3" value = "3" name="EdemaScoreInput"/>
+                        <label class="custom-control-label" for="Edema3">3</label>
+                    </div>
+                </form>,
+                <form id="ExcoriationInput">
+                    <div class="custom-control custom-radio">
+                        <input type="radio" class="custom-control-input" id="Excoriation0" value = "0" name="ExcoriationScoreInput"/>
+                        <label class="custom-control-label" for="Excoriation0">0</label>
                     </div>
                     <div class="custom-control custom-radio">
-                        <input type="radio" class="custom-control-input" id="defaultInline2" name="groupOfDefaultRadios"/>
-                        <label class="custom-control-label" for="defaultInline2">2</label>
+                        <input type="radio" class="custom-control-input" id="Excoriation1" value = "1" name="ExcoriationScoreInput"/>
+                        <label class="custom-control-label" for="Excoriation1">1</label>
                     </div>
                     <div class="custom-control custom-radio">
-                        <input type="radio" class="custom-control-input" id="defaultInline3" name="groupOfDefaultRadios"/>
-                        <label class="custom-control-label" for="defaultInline3">3</label>
-                    </div>
-                </div>,
-                <div>
-                    <div class="custom-control custom-radio">
-                        <input type="radio" class="custom-control-input" id="defaultInline0" name="groupOfDefaultRadios"/>
-                        <label class="custom-control-label" for="defaultInline0">0</label>
+                        <input type="radio" class="custom-control-input" id="Excoriation2" value = "2" name="ExcoriationScoreInput"/>
+                        <label class="custom-control-label" for="Excoriation2">2</label>
                     </div>
                     <div class="custom-control custom-radio">
-                        <input type="radio" class="custom-control-input" id="defaultInline1" name="groupOfDefaultRadios"/>
-                        <label class="custom-control-label" for="defaultInline1">1</label>
+                        <input type="radio" class="custom-control-input" id="Excoriation3" value = "3" name="ExcoriationScoreInput"/>
+                        <label class="custom-control-label" for="Excoriation3">3</label>
+                    </div>
+                </form>,
+                <form id="LichenificationInput">
+                    <div class="custom-control custom-radio">
+                        <input type="radio" class="custom-control-input" id="Lichenification0" value = "0" name="LichenificationScoreInput"/>
+                        <label class="custom-control-label" for="Lichenification0">0</label>
                     </div>
                     <div class="custom-control custom-radio">
-                        <input type="radio" class="custom-control-input" id="defaultInline2" name="groupOfDefaultRadios"/>
-                        <label class="custom-control-label" for="defaultInline2">2</label>
+                        <input type="radio" class="custom-control-input" id="Lichenification1" value = "1" name="LichenificationScoreInput"/>
+                        <label class="custom-control-label" for="Lichenification1">1</label>
                     </div>
                     <div class="custom-control custom-radio">
-                        <input type="radio" class="custom-control-input" id="defaultInline3" name="groupOfDefaultRadios"/>
-                        <label class="custom-control-label" for="defaultInline3">3</label>
-                    </div>
-                </div>,
-                <div>
-                    <div class="custom-control custom-radio">
-                        <input type="radio" class="custom-control-input" id="defaultInline0" name="groupOfDefaultRadios"/>
-                        <label class="custom-control-label" for="defaultInline0">0</label>
+                        <input type="radio" class="custom-control-input" id="Lichenification2" value = "2" name="LichenificationScoreInput"/>
+                        <label class="custom-control-label" for="Lichenification2">2</label>
                     </div>
                     <div class="custom-control custom-radio">
-                        <input type="radio" class="custom-control-input" id="defaultInline1" name="groupOfDefaultRadios"/>
-                        <label class="custom-control-label" for="defaultInline1">1</label>
+                        <input type="radio" class="custom-control-input" id="Lichenification3" value = "3" name="LichenificationScoreInput"/>
+                        <label class="custom-control-label" for="Lichenification3">3</label>
+                    </div>
+                </form>,
+                <form id="AreaScoreInput">
+                    <div class="custom-control custom-radio">
+                        <input type="radio" class="custom-control-input" id="AreaScore0" value = "0" name="AreaScoreScoreInput"/>
+                        <label class="custom-control-label" for="AreaScore0">0</label>
                     </div>
                     <div class="custom-control custom-radio">
-                        <input type="radio" class="custom-control-input" id="defaultInline2" name="groupOfDefaultRadios"/>
-                        <label class="custom-control-label" for="defaultInline2">2</label>
+                        <input type="radio" class="custom-control-input" id="AreaScore1" value = "1" name="AreaScoreScoreInput"/>
+                        <label class="custom-control-label" for="AreaScore1">1</label>
                     </div>
                     <div class="custom-control custom-radio">
-                        <input type="radio" class="custom-control-input" id="defaultInline3" name="groupOfDefaultRadios"/>
-                        <label class="custom-control-label" for="defaultInline3">3</label>
+                        <input type="radio" class="custom-control-input" id="AreaScore2" value = "2" name="AreaScoreScoreInput"/>
+                        <label class="custom-control-label" for="AreaScore2">2</label>
                     </div>
                     <div class="custom-control custom-radio">
-                        <input type="radio" class="custom-control-input" id="defaultInline4" name="groupOfDefaultRadios"/>
-                        <label class="custom-control-label" for="defaultInline4">4</label>
+                        <input type="radio" class="custom-control-input" id="AreaScore3" value = "3" name="AreaScoreScoreInput"/>
+                        <label class="custom-control-label" for="AreaScore3">3</label>
                     </div>
                     <div class="custom-control custom-radio">
-                        <input type="radio" class="custom-control-input" id="defaultInline5" name="groupOfDefaultRadios"/>
-                        <label class="custom-control-label" for="defaultInline5">5</label>
+                        <input type="radio" class="custom-control-input" id="AreaScore4" value = "4" name="AreaScoreScoreInput"/>
+                        <label class="custom-control-label" for="AreaScore4">4</label>
                     </div>
-                </div>
+                    <div class="custom-control custom-radio">
+                        <input type="radio" class="custom-control-input" id="AreaScore5" value = "5" name="AreaScoreScoreInput"/>
+                        <label class="custom-control-label" for="AreaScore5">5</label>
+                    </div>
+                </form>
             ]
         ];
 
