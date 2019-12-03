@@ -9,7 +9,9 @@ import FileDialogue from './FileDialogue';
 class UploadPage extends Component {
     state = {
         expanded: false,
-        score: ""
+        date: "",
+        region: "",
+        score: "",
     };
 
     constructor(props){
@@ -28,13 +30,13 @@ class UploadPage extends Component {
         const Excoriation = parseInt(this.getRadioVal(document.getElementById('ExcoriationInput'), 'ExcoriationScoreInput'));
         const Lichenification = parseInt(this.getRadioVal(document.getElementById('LichenificationInput'), 'LichenificationScoreInput'));
         const AreaScore = parseInt(this.getRadioVal(document.getElementById('AreaScoreInput'), 'AreaScoreScoreInput'));
-        
-        if (Erythema >= 0 && Erythema <= 3 && Edema >= 0 && Edema <= 3 && Excoriation >= 0 && Excoriation <= 3
-            && Lichenification >= 0 && Lichenification <= 3 && AreaScore >= 0 && Erythema <= 6) {
-                const total = Erythema + Edema + Excoriation + Lichenification + AreaScore;
-                this.setState({score: total});
-        } else {
-            this.setState({score: "A value is incorrect"});
+
+        const total = Erythema + Edema + Excoriation + Lichenification + AreaScore;
+
+        if(total == NaN){
+            this.setState({score: "You must select a value in each column"});
+        }else {
+            this.setState({score: total});
         }
     }
 
@@ -200,7 +202,12 @@ class UploadPage extends Component {
                     </div>
                     <div className = "Inline">
                         <h5>Region</h5>
-                        <input className = "Input" type="text" placeholder = "eg. Head"/>
+                        <select className = "Input">
+                            <option value="head">Head</option>
+                            <option value="trunk">Trunk</option>
+                            <option value="leg">Leg</option>
+                            <option value="back">Back</option>
+                        </select>                    
                     </div>
                     <div>
                         <DataTable headings = {headings} rows = {rows}></DataTable>
