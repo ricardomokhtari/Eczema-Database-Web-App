@@ -15,6 +15,7 @@ class UploadPage extends Component {
     constructor(props){
         super(props);
         this.calculateScore = this.calculateScore.bind(this);
+        this.handleUpload = this.handleUpload.bind(this);
     }
 
     onToggle = (expanded) => {
@@ -38,6 +39,22 @@ class UploadPage extends Component {
         
     }
 
+    // template POST requst, untested
+    handleUpload() {
+        // create a new XMLHttpRequest
+        var xhr = new XMLHttpRequest()
+        // get a callback when the server responds
+        xhr.addEventListener('load', () => {
+          // update the state of the component with the result here
+          console.log(xhr.responseText)
+        })
+        // open the request with the verb and the url
+        xhr.open('POST', 'put our URL here')
+        // send the request
+        xhr.send(JSON.stringify({data: this.state.score}))
+        console.log("button clicked")
+    }
+
     render() { 
         const {expanded} = this.state;
 
@@ -53,19 +70,103 @@ class UploadPage extends Component {
         const rows = [
             [
                 <div>
-                    <input id="Erythema" maxLength = "1" className = "TableInput" type="text"></input>
+                    <div class="custom-control custom-radio">
+                        <input type="radio" class="custom-control-input" id="defaultInline0" name="groupOfDefaultRadios"/>
+                        <label class="custom-control-label" for="defaultInline0">0</label>
+                    </div>
+                    <div class="custom-control custom-radio">
+                        <input type="radio" class="custom-control-input" id="defaultInline1" name="groupOfDefaultRadios"/>
+                        <label class="custom-control-label" for="defaultInline1">1</label>
+                    </div>
+                    <div class="custom-control custom-radio">
+                        <input type="radio" class="custom-control-input" id="defaultInline2" name="groupOfDefaultRadios"/>
+                        <label class="custom-control-label" for="defaultInline2">2</label>
+                    </div>
+
+                    <div class="custom-control custom-radio">
+                        <input type="radio" class="custom-control-input" id="defaultInline3" name="groupOfDefaultRadios"/>
+                        <label class="custom-control-label" for="defaultInline3">3</label>
+                    </div>
                 </div>,
                 <div>
-                    <input id="Edema" maxLength = "1" className = "TableInput" type="text"></input>
+                    <div class="custom-control custom-radio">
+                        <input type="radio" class="custom-control-input" id="defaultInline0" name="groupOfDefaultRadios"/>
+                        <label class="custom-control-label" for="defaultInline0">0</label>
+                    </div>
+                    <div class="custom-control custom-radio">
+                        <input type="radio" class="custom-control-input" id="defaultInline1" name="groupOfDefaultRadios"/>
+                        <label class="custom-control-label" for="defaultInline1">1</label>
+                    </div>
+                    <div class="custom-control custom-radio">
+                        <input type="radio" class="custom-control-input" id="defaultInline2" name="groupOfDefaultRadios"/>
+                        <label class="custom-control-label" for="defaultInline2">2</label>
+                    </div>
+                    <div class="custom-control custom-radio">
+                        <input type="radio" class="custom-control-input" id="defaultInline3" name="groupOfDefaultRadios"/>
+                        <label class="custom-control-label" for="defaultInline3">3</label>
+                    </div>
                 </div>,
                 <div>
-                    <input id="Excoriation" maxLength = "1" className = "TableInput" type="text"></input>
+                    <div class="custom-control custom-radio">
+                        <input type="radio" class="custom-control-input" id="defaultInline0" name="groupOfDefaultRadios"/>
+                        <label class="custom-control-label" for="defaultInline0">0</label>
+                    </div>
+                    <div class="custom-control custom-radio">
+                        <input type="radio" class="custom-control-input" id="defaultInline1" name="groupOfDefaultRadios"/>
+                        <label class="custom-control-label" for="defaultInline1">1</label>
+                    </div>
+                    <div class="custom-control custom-radio">
+                        <input type="radio" class="custom-control-input" id="defaultInline2" name="groupOfDefaultRadios"/>
+                        <label class="custom-control-label" for="defaultInline2">2</label>
+                    </div>
+                    <div class="custom-control custom-radio">
+                        <input type="radio" class="custom-control-input" id="defaultInline3" name="groupOfDefaultRadios"/>
+                        <label class="custom-control-label" for="defaultInline3">3</label>
+                    </div>
                 </div>,
                 <div>
-                    <input id="Lichenification" maxLength = "1" className = "TableInput" type="text"></input>
+                    <div class="custom-control custom-radio">
+                        <input type="radio" class="custom-control-input" id="defaultInline0" name="groupOfDefaultRadios"/>
+                        <label class="custom-control-label" for="defaultInline0">0</label>
+                    </div>
+                    <div class="custom-control custom-radio">
+                        <input type="radio" class="custom-control-input" id="defaultInline1" name="groupOfDefaultRadios"/>
+                        <label class="custom-control-label" for="defaultInline1">1</label>
+                    </div>
+                    <div class="custom-control custom-radio">
+                        <input type="radio" class="custom-control-input" id="defaultInline2" name="groupOfDefaultRadios"/>
+                        <label class="custom-control-label" for="defaultInline2">2</label>
+                    </div>
+                    <div class="custom-control custom-radio">
+                        <input type="radio" class="custom-control-input" id="defaultInline3" name="groupOfDefaultRadios"/>
+                        <label class="custom-control-label" for="defaultInline3">3</label>
+                    </div>
                 </div>,
                 <div>
-                    <input id="AreaScore" maxLength = "1" className = "TableInput" type="text"></input>
+                    <div class="custom-control custom-radio">
+                        <input type="radio" class="custom-control-input" id="defaultInline0" name="groupOfDefaultRadios"/>
+                        <label class="custom-control-label" for="defaultInline0">0</label>
+                    </div>
+                    <div class="custom-control custom-radio">
+                        <input type="radio" class="custom-control-input" id="defaultInline1" name="groupOfDefaultRadios"/>
+                        <label class="custom-control-label" for="defaultInline1">1</label>
+                    </div>
+                    <div class="custom-control custom-radio">
+                        <input type="radio" class="custom-control-input" id="defaultInline2" name="groupOfDefaultRadios"/>
+                        <label class="custom-control-label" for="defaultInline2">2</label>
+                    </div>
+                    <div class="custom-control custom-radio">
+                        <input type="radio" class="custom-control-input" id="defaultInline3" name="groupOfDefaultRadios"/>
+                        <label class="custom-control-label" for="defaultInline3">3</label>
+                    </div>
+                    <div class="custom-control custom-radio">
+                        <input type="radio" class="custom-control-input" id="defaultInline4" name="groupOfDefaultRadios"/>
+                        <label class="custom-control-label" for="defaultInline4">4</label>
+                    </div>
+                    <div class="custom-control custom-radio">
+                        <input type="radio" class="custom-control-input" id="defaultInline5" name="groupOfDefaultRadios"/>
+                        <label class="custom-control-label" for="defaultInline5">5</label>
+                    </div>
                 </div>
             ]
         ];
@@ -99,6 +200,9 @@ class UploadPage extends Component {
                     </div>
                     <div>
                         <FileDialogue></FileDialogue>                  
+                    </div>
+                    <div>
+                        <button onClick = {this.handleUpload} className = "btn btn-info m-2">Upload Image and Score</button>
                     </div>
                 </div>
 
