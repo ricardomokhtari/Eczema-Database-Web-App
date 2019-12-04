@@ -61,13 +61,6 @@ class NewPatientPage extends Component {
                     <button className = "btn btn-info m-2" onClick={this.setFields}>Add Patient</button>
                 </div>
               </div>
-              <div>
-                {this.state.firstname}
-                {this.state.lastname}
-                {this.state.sex}
-                {this.state.ethnicity}
-                {this.state.dateofbirth}
-              </div>
             </React.Fragment>
         );
     }
