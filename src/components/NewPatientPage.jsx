@@ -63,6 +63,10 @@ class NewPatientPage extends Component {
               </div>
               <div>
                 {this.state.firstname}
+                {this.state.lastname}
+                {this.state.sex}
+                {this.state.ethnicity}
+                {this.state.dateofbirth}
               </div>
             </React.Fragment>
         );
