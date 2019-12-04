@@ -7,8 +7,6 @@ function buildFileSelector(){
     return fileSelector;
 }
 
-
-
 class FileDialogue extends Component {
     componentDidMount(){
         this.fileSelector = buildFileSelector();
@@ -20,7 +18,7 @@ class FileDialogue extends Component {
     }
 
     render(){
-        return <button className="btn btn-info m-2" href="" onClick={this.handleFileSelect}>Select files</button>
+        return <button className="btn btn-info m-2" href="" onClick={this.handleFileSelect}>Select Image</button>
     }
 }
  
