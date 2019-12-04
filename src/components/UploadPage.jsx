@@ -22,38 +22,59 @@ class UploadPage extends Component {
         score: null,
     };
 
+    // binding "this" in functions to UploadPage component
     constructor(props){
         super(props);
         this.getScore = this.getScore.bind(this);
         this.handleUpload = this.handleUpload.bind(this);
     }
-
+    
+    // function that sets side bar to expanded if expand button clicked
     onToggle = (expanded) => {
         this.setState({ expanded: expanded });
     };
 
+    // returns date that user inputs in the date input box (as a string)
     getDate(){
         return document.getElementById('dateInput').value;
     }
 
+    // returns region that user inputs in the date input box (as a string)
     getRegion(){
+        // get all input fields in the dropdown
         const allRegions = document.getElementById('regionInput');
+        //extract value of the selected region
         const selectedRegion = allRegions.options[allRegions.selectedIndex].value;
         return selectedRegion;
     }
 
+    // returns region score based on user input (as a float)
     getScore(){
-        const Erythema = parseInt(this.getRadioVal(document.getElementById('ErythemaInput'), 'ErythemaScoreInput'));
-        const Edema = parseInt(this.getRadioVal(document.getElementById('EdemaInput'), 'EdemaScoreInput'));
-        const Excoriation = parseInt(this.getRadioVal(document.getElementById('ExcoriationInput'), 'ExcoriationScoreInput'));
-        const Lichenification = parseInt(this.getRadioVal(document.getElementById('LichenificationInput'), 'LichenificationScoreInput'));
-        const AreaScore = parseInt(this.getRadioVal(document.getElementById('AreaScoreInput'), 'AreaScoreScoreInput'));
+        // obtain the selected radio button in each column, as a float
+        const Erythema = parseFloat(this.getRadioVal(document.getElementById('ErythemaInput'), 'ErythemaScoreInput'));
+        const Edema = parseFloat(this.getRadioVal(document.getElementById('EdemaInput'), 'EdemaScoreInput'));
+        const Excoriation = parseFloat(this.getRadioVal(document.getElementById('ExcoriationInput'), 'ExcoriationScoreInput'));
+        const Lichenification = parseFloat(this.getRadioVal(document.getElementById('LichenificationInput'), 'LichenificationScoreInput'));
+        const AreaScore = parseFloat(this.getRadioVal(document.getElementById('AreaScoreInput'), 'AreaScoreScoreInput'));
 
-        const total = Erythema + Edema + Excoriation + Lichenification + AreaScore;
+        // get the region input field for score multiplier
+        const region = this.getRegion();
+        let multiplier = 0;
+
+        // set multiplier to correct value based on region
+        if(region == "head" || region == "upperExtremities"){
+            multiplier = 0.2;
+        } else {
+            multiplier  = 0.3;
+        }
+
+        // perform arithmetic
+        const total = (Erythema + Edema + Excoriation + Lichenification) * AreaScore * multiplier;
 
         return total;
     }
 
+    // function that loops through radio button and returns the value of the selected button
     getRadioVal(form, name) {
         var val;
         // get list of radio buttons with specified name
@@ -69,6 +90,7 @@ class UploadPage extends Component {
         return val; // return value of checked radio or undefined if none checked
     }
     
+    // function that updates state of uploadPage and POSTs the data to backend (incomplete)
     handleUpload() {
         const date = this.getDate();
         const region = this.getRegion();
@@ -79,9 +101,10 @@ class UploadPage extends Component {
         console.log(this.state);
     }
 
-    render() { 
+    render() {
         const {expanded} = this.state;
 
+        // table headings
         const headings = [
             'Erythema',
             'Edema',
@@ -89,7 +112,8 @@ class UploadPage extends Component {
             'Lichenification',
             'Area Score',
         ];
-      
+        
+        // table rows (consist of radio buttons)
         const rows = [
             [
                 <form id="ErythemaInput">
@@ -238,7 +262,6 @@ class UploadPage extends Component {
                         <button onClick = {this.handleUpload} className = "btn btn-info m-2">Upload Image and Score</button>
                     </div>
                 </div>
-
                 <div>
                     <SideNav onToggle = {this.onToggle}>
                         <SideNav.Toggle />
