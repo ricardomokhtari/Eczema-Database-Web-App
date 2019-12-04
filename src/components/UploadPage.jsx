@@ -7,16 +7,24 @@ import './DataTable.css';
 import FileDialogue from './FileDialogue';
 
 class UploadPage extends Component {
+    /*
+     the state of the UploadPage component consists of:
+     expanded: whether or not the side bar is expanded
+     date: the date that the user enters
+     region: the region that the user enters
+     score: the total score that gets calculated
+    */
+    
     state = {
         expanded: false,
-        date: "",
-        region: "",
-        score: "",
+        date: null,
+        region: null,
+        score: null,
     };
 
     constructor(props){
         super(props);
-        this.calculateScore = this.calculateScore.bind(this);
+        this.getScore = this.getScore.bind(this);
         this.handleUpload = this.handleUpload.bind(this);
     }
 
@@ -24,7 +32,17 @@ class UploadPage extends Component {
         this.setState({ expanded: expanded });
     };
 
-    calculateScore(){
+    getDate(){
+        return document.getElementById('dateInput').value;
+    }
+
+    getRegion(){
+        const allRegions = document.getElementById('regionInput');
+        const selectedRegion = allRegions.options[allRegions.selectedIndex].value;
+        return selectedRegion;
+    }
+
+    getScore(){
         const Erythema = parseInt(this.getRadioVal(document.getElementById('ErythemaInput'), 'ErythemaScoreInput'));
         const Edema = parseInt(this.getRadioVal(document.getElementById('EdemaInput'), 'EdemaScoreInput'));
         const Excoriation = parseInt(this.getRadioVal(document.getElementById('ExcoriationInput'), 'ExcoriationScoreInput'));
@@ -33,11 +51,7 @@ class UploadPage extends Component {
 
         const total = Erythema + Edema + Excoriation + Lichenification + AreaScore;
 
-        if(total == NaN){
-            this.setState({score: "You must select a value in each column"});
-        }else {
-            this.setState({score: total});
-        }
+        return total;
     }
 
     getRadioVal(form, name) {
@@ -55,21 +69,14 @@ class UploadPage extends Component {
         return val; // return value of checked radio or undefined if none checked
     }
     
-
-    // template POST requst, untested
     handleUpload() {
-        // create a new XMLHttpRequest
-        var xhr = new XMLHttpRequest()
-        // get a callback when the server responds
-        xhr.addEventListener('load', () => {
-          // update the state of the component with the result here
-          console.log(xhr.responseText)
-        })
-        // open the request with the verb and the url
-        xhr.open('POST', 'put our URL here')
-        // send the request
-        xhr.send(JSON.stringify({data: this.state.score}))
-        console.log("button clicked")
+        const date = this.getDate();
+        const region = this.getRegion();
+        const score = this.getScore();
+        this.setState({date: date});
+        this.setState({region: region});
+        this.setState({score: score});
+        console.log(this.state);
     }
 
     render() { 
@@ -182,6 +189,10 @@ class UploadPage extends Component {
                         <input type="radio" class="custom-control-input" id="AreaScore5" value = "5" name="AreaScoreScoreInput"/>
                         <label class="custom-control-label" for="AreaScore5">5</label>
                     </div>
+                    <div class="custom-control custom-radio">
+                        <input type="radio" class="custom-control-input" id="AreaScore6" value = "6" name="AreaScoreScoreInput"/>
+                        <label class="custom-control-label" for="AreaScore6">6</label>
+                    </div>
                 </form>
             ]
         ];
@@ -198,22 +209,24 @@ class UploadPage extends Component {
                     </div>
                     <div className = "Inline">
                         <h5>Date Taken</h5>
-                        <input className = "Input" type="text" placeholder = "eg. 24/11/2019"/>
+                        <input className = "Input" id = "dateInput" type="text" placeholder = "eg. 24/11/2019"/>
                     </div>
                     <div className = "Inline">
                         <h5>Region</h5>
-                        <select className = "Input">
-                            <option value="head">Head</option>
-                            <option value="trunk">Trunk</option>
-                            <option value="leg">Leg</option>
-                            <option value="back">Back</option>
-                        </select>                    
+                        <div>
+                            <select className = "Input" id = "regionInput">
+                                <option value="head" name = "region">Head</option>
+                                <option value="trunk" name = "region">Trunk</option>
+                                <option value="leg" name = "region">Leg</option>
+                                <option value="back" name = "region">Back</option>
+                            </select>                    
+                        </div>
                     </div>
                     <div>
                         <DataTable headings = {headings} rows = {rows}></DataTable>
                     </div>
                     <div>
-                        <button onClick = {this.calculateScore} className = "btn btn-info m-2">Calculate total score</button>
+                        <button onClick = {this.getScore} className = "btn btn-info m-2">Calculate total score</button>
                     </div>
                     <div className = "Inline">
                         <h5>Score: {this.state.score}</h5>
