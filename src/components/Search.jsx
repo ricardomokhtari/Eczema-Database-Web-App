@@ -15,7 +15,7 @@ class Search extends Component {
                     </div>
                     <span className="input-group-btn">
                     <Router forceRefresh = {true}>
-                      <Link to="/NewPatientPage">
+                      <Link to="/newpatient">
                         <button className="btn btn-info btn-m">Add New Patient</button>
                       </Link>
                     </Router>
