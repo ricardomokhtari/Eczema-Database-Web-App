@@ -8,5 +8,5 @@ before_install:
 script:
   - npm test
 
-cache:
-  npm: false
+cache: 
+  npm
