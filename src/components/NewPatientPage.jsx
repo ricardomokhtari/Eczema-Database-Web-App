@@ -7,10 +7,10 @@ class NewPatientPage extends Component {
     constructor(props){
       super(props);
       this.state = {
-        firstame: null,
+        firstname: null,
         lastname: null,
         sex: null,
-        ethinicity: null,
+        ethnicity: null,
         dateofbirth: null
       };
       this.setFields = this.setFields.bind(this);
@@ -18,12 +18,13 @@ class NewPatientPage extends Component {
 
     setFields(e){
       this.setState({
-      firstname: this.refs.firstname.value,
-      lastname: this.refs.lastname.value,
-      sex: this.refs.sex.value,
-      ethnicity: this.refs.ethnicity.value,
-      dateofbirth: this.refs.dateofbirth.value
+        firstname: this.refs.firstname.value,
+        lastname: this.refs.lastname.value,
+        sex: this.refs.sex.value,
+        ethnicity: this.refs.ethnicity.value,
+        dateofbirth: this.refs.dateofbirth.value
       });
+      console.log(this.state);
     }
 
     render() {

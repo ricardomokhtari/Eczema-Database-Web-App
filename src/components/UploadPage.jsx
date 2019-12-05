@@ -14,21 +14,25 @@ class UploadPage extends Component {
      region: the region that the user enters
      score: the total score that gets calculated
     */
-    
     state = {
-        expanded: false,
-        date: null,
-        region: null,
-        score: null,
-    };
-
-    // binding "this" in functions to UploadPage component
-    constructor(props){
-        super(props);
+       expanded: false,
+       date: null,
+       region: null,
+       score: null
+   };
+    
+   
+   // binding "this" in functions to UploadPage component
+   constructor(props){
+       super(props);
         this.getScore = this.getScore.bind(this);
         this.handleUpload = this.handleUpload.bind(this);
     }
-    
+
+    componentDidMount(){
+        console.log(this.state);
+    }
+
     // function that sets side bar to expanded if expand button clicked
     onToggle = (expanded) => {
         this.setState({ expanded: expanded });
@@ -92,12 +96,14 @@ class UploadPage extends Component {
     
     // function that updates state of uploadPage and POSTs the data to backend (incomplete)
     handleUpload() {
-        const date = this.getDate();
-        const region = this.getRegion();
-        const score = this.getScore();
-        this.setState({date: date});
-        this.setState({region: region});
-        this.setState({score: score});
+        var date = this.getDate();
+        var region = this.getRegion();
+        var score = this.getScore();
+        this.setState({
+            date: date,
+            region: region,
+            score: score
+        });
         console.log(this.state);
     }
 
