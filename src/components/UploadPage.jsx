@@ -29,6 +29,7 @@ class UploadPage extends Component {
         this.handleUpload = this.handleUpload.bind(this);
     }
 
+    // Used for debugging state
     componentDidMount(){
         console.log(this.state);
     }
@@ -75,6 +76,8 @@ class UploadPage extends Component {
 
         // perform arithmetic
         const total = (Erythema + Edema + Excoriation + Lichenification) * AreaScore * multiplier;
+
+        this.setState({score: total});
 
         return total;
     }
