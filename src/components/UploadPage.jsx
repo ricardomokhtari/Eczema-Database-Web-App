@@ -14,17 +14,17 @@ class UploadPage extends Component {
      region: the region that the user enters
      score: the total score that gets calculated
     */
+
     state = {
-       expanded: false,
-       date: null,
-       region: null,
-       score: null
-   };
+        expanded: false,
+        date: null,
+        region: null,
+        score: null
+    };
     
-   
    // binding "this" in functions to UploadPage component
    constructor(props){
-       super(props);
+        super(props);
         this.getScore = this.getScore.bind(this);
         this.handleUpload = this.handleUpload.bind(this);
     }
@@ -40,7 +40,8 @@ class UploadPage extends Component {
 
     // returns date that user inputs in the date input box (as a string)
     getDate(){
-        return document.getElementById('dateInput').value;
+        var date = document.getElementById('dateInput').value
+        return date;
     }
 
     // returns region that user inputs in the date input box (as a string)
@@ -96,15 +97,16 @@ class UploadPage extends Component {
     
     // function that updates state of uploadPage and POSTs the data to backend (incomplete)
     handleUpload() {
-        var date = this.getDate();
-        var region = this.getRegion();
-        var score = this.getScore();
+        let date = this.getDate();
+        let region = this.getRegion();
+        let score = this.getScore();
         this.setState({
             date: date,
             region: region,
             score: score
+        }, () => {
+            console.log(this.state);
         });
-        console.log(this.state);
     }
 
     render() {
