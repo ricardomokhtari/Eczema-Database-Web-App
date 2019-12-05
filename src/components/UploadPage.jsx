@@ -68,7 +68,7 @@ class UploadPage extends Component {
         let multiplier = 0;
 
         // set multiplier to correct value based on region
-        if(region == "head" || region == "upperExtremities"){
+        if(region === "head" || region === "upperExtremities"){
             multiplier = 0.2;
         } else {
             multiplier  = 0.3;
