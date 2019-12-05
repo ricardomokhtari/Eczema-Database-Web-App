@@ -17,14 +17,15 @@ class NewPatientPage extends Component {
     }
 
     setFields(e){
-      this.setState({
-        firstname: this.refs.firstname.value,
-        lastname: this.refs.lastname.value,
-        sex: this.refs.sex.value,
-        ethnicity: this.refs.ethnicity.value,
-        dateofbirth: this.refs.dateofbirth.value
-      });
-      console.log(this.state);
+        this.setState({
+            firstname: this.refs.firstname.value,
+            lastname: this.refs.lastname.value,
+            sex: this.refs.sex.value,
+            ethnicity: this.refs.ethnicity.value,
+            dateofbirth: this.refs.dateofbirth.value
+        }, () => {
+            console.log(this.state);
+        });
     }
 
     render() {
