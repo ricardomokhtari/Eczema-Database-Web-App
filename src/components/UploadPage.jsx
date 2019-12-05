@@ -220,7 +220,7 @@ class UploadPage extends Component {
                 </form>
             ]
         ];
-
+    
         return (
             <React.Fragment>
                 <div 
@@ -290,5 +290,5 @@ class UploadPage extends Component {
         );
     }
 }
- 
+
 export default UploadPage;

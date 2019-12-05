@@ -7,6 +7,7 @@ import {
 import Homepage from './components/Homepage';
 import ViewPage from './components/viewpage';
 import UploadPage from './components/UploadPage';
+import NewPatientPage from './components/NewPatientPage';
 
 class App extends Component {
     render () {
@@ -22,10 +23,13 @@ class App extends Component {
                     <Route path="/upload" component = {UploadPage}>
                         <UploadPage/>
                     </Route>
+                    <Route path="/newpatient" component = {NewPatientPage}>
+                        <NewPatientPage/>
+                    </Route>
                 </Switch>
             </Router>
           );
         }
     }
- 
+
 export default App;
