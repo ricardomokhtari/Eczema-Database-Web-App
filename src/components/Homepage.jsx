@@ -10,10 +10,14 @@ import {
 } from "react-router-dom";
 
 class Homepage extends Component {
+  state={
+    patientID:null
+  };
 
   constructor(props) {
     super(props);
     this.handleGet = this.handleGet.bind(this);
+    this.setPatientID = this.setPatientID.bind(this);
   }
 
   // template GET request, untested
@@ -31,6 +35,10 @@ class Homepage extends Component {
     // send the request
     xhr.send()
     console.log("button clicked")
+  }
+
+  setPatientID(){
+
   }
 
   render() {
