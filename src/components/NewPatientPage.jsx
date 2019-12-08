@@ -16,7 +16,8 @@ class NewPatientPage extends Component {
         ethnicity: null,
         dateofbirth: null
       };
-      this.setFields = this.setFields.bind(this);
+      this.handlePost = this.handlePost.bind(this);
+      this.handleUpload = this.handleUpload.bind(this);
     }
 
     handlePost(){
