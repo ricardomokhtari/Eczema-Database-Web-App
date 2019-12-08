@@ -13,11 +13,11 @@ var serverURL = "http://localhost:8080/LectureServlet/"
 class UploadPage extends Component {
     /*
      the state of the UploadPage component consists of:
-     expanded: whether or not the side bar is expanded
-     date: the date that the user enters
-     region: the region that the user enters
-     score: the total score that gets calculated
-     image: the image that the user uploads
+        expanded: whether or not the side bar is expanded
+        date: the date that the user enters
+        region: the region that the user enters
+        score: the total score that gets calculated
+        image: the image that the user uploads
     */
 
     state = {
@@ -133,7 +133,7 @@ class UploadPage extends Component {
             date: date,
             region: region,
             score: score
-        }, () => {
+        }, () => { // arrow function here waits for state to be updating before POSTing
             this.handlePost();
         });
     }

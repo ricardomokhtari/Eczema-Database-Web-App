@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import './NewPatientPage.css';
 
+// var serverURL = "https://servlet-1.herokuapp.com/"
+var serverURL = "http://localhost:8080/LectureServlet/"
+
 class NewPatientPage extends Component {
-
-
     constructor(props){
       super(props);
       this.state = {
@@ -16,7 +17,18 @@ class NewPatientPage extends Component {
       this.setFields = this.setFields.bind(this);
     }
 
-    setFields(e){
+    handlePost(){
+        axios.post(serverURL, 
+            {
+                newPatientInfo: this.state
+            }).then(response => {
+            console.log(response.data)
+        }).catch(error => {
+            console.log(error.response)
+        })
+    }
+
+    handleUpload(e){
         this.setState({
             firstname: this.refs.firstname.value,
             lastname: this.refs.lastname.value,
@@ -24,7 +36,7 @@ class NewPatientPage extends Component {
             ethnicity: this.refs.ethnicity.value,
             dateofbirth: this.refs.dateofbirth.value
         }, () => {
-            console.log(this.state);
+            this.handlePost();
         });
     }
 
@@ -60,7 +72,7 @@ class NewPatientPage extends Component {
                     <input className = "Input" type="text" ref="dateofbirth" placeholder = "1/1/1990"/>
                 </div>
                 <div>
-                    <button className = "btn btn-info m-2" onClick={this.setFields}>Add Patient</button>
+                    <button className = "btn btn-info m-2" onClick={this.handleUpload}>Add Patient</button>
                 </div>
               </div>
             </React.Fragment>
