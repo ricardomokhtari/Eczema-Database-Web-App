@@ -5,6 +5,9 @@ import './UploadPage.css';
 import DataTable from './DataTable';
 import './DataTable.css';
 import FileDialogue from './FileDialogue';
+import axios from 'axios';
+
+var serverURL = "http://localhost:8080/LectureServlet/"
 
 class UploadPage extends Component {
     /*
@@ -19,19 +22,39 @@ class UploadPage extends Component {
         expanded: false,
         date: null,
         region: null,
-        score: null
+        score: null,
+        image: null
     };
+
+    async handleGet(){
+        axios.get(serverURL).then(({data}) => {
+            console.log(data)
+        }).catch(error => {
+            console.log(error.response)
+        })
+    }
+
+    handlePost(){
+        axios.post(serverURL, 
+            {
+                dateUploaded: this.state.date, 
+                region: this.state.region, 
+                score: this.state.score, 
+                image: this.state.image
+            }).then(response => {
+            console.log(response.data)
+        }).catch(error => {
+            console.log(error.response)
+        })
+    }
     
-   // binding "this" in functions to UploadPage component
-   constructor(props){
+    // binding "this" in functions to UploadPage component
+    constructor(props){
         super(props);
         this.getScore = this.getScore.bind(this);
         this.handleUpload = this.handleUpload.bind(this);
-    }
-
-    // Used for debugging state
-    componentDidMount(){
-        console.log(this.state);
+        this.handleGet = this.handleGet.bind(this);
+        this.handlePost = this.handlePost.bind(this);
     }
 
     // function that sets side bar to expanded if expand button clicked
@@ -270,7 +293,10 @@ class UploadPage extends Component {
                         <FileDialogue></FileDialogue>                  
                     </div>
                     <div>
-                        <button onClick = {this.handleUpload} className = "btn btn-info m-2">Upload Image and Score</button>
+                        <button onClick = {this.handleGet} className = "btn btn-info m-2">GET</button>
+                    </div>
+                    <div>
+                        <button onClick = {this.handlePost} className = "btn btn-info m-2">Upload Image and Score</button>
                     </div>
                 </div>
                 <div>
