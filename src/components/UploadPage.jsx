@@ -7,6 +7,7 @@ import './DataTable.css';
 import FileDialogue from './FileDialogue';
 import axios from 'axios';
 
+// var serverURL = "https://servlet-1.herokuapp.com/"
 var serverURL = "http://localhost:8080/LectureServlet/"
 
 class UploadPage extends Component {
@@ -16,6 +17,7 @@ class UploadPage extends Component {
      date: the date that the user enters
      region: the region that the user enters
      score: the total score that gets calculated
+     image: the image that the user uploads
     */
 
     state = {
@@ -121,17 +123,18 @@ class UploadPage extends Component {
         return val; // return value of checked radio or undefined if none checked
     }
     
-    // function that updates state of uploadPage and POSTs the data to backend (incomplete)
+    // function that updates state of uploadPage and POSTs the data to backend
     handleUpload() {
         let date = this.getDate();
         let region = this.getRegion();
         let score = this.getScore();
+        //let image = this.getImage(); (getImage() function not yet written)
         this.setState({
             date: date,
             region: region,
             score: score
         }, () => {
-            console.log(this.state);
+            this.handlePost();
         });
     }
 
@@ -293,10 +296,7 @@ class UploadPage extends Component {
                         <FileDialogue></FileDialogue>                  
                     </div>
                     <div>
-                        <button onClick = {this.handleGet} className = "btn btn-info m-2">GET</button>
-                    </div>
-                    <div>
-                        <button onClick = {this.handlePost} className = "btn btn-info m-2">Upload Image and Score</button>
+                        <button onClick = {this.handleUpload} className = "btn btn-info m-2">Upload Image and Score</button>
                     </div>
                 </div>
                 <div>

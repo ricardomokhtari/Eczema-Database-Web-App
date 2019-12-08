@@ -8,6 +8,10 @@ import {
   Route,
   Link
 } from "react-router-dom";
+import axios from 'axios';
+
+// var serverURL = "https://servlet-1.herokuapp.com/"
+var serverURL = "http://localhost:8080/LectureServlet/"
 
 class Homepage extends Component {
 
@@ -16,21 +20,18 @@ class Homepage extends Component {
     this.handleGet = this.handleGet.bind(this);
   }
 
-  // template GET request, untested
-  handleGet(){
-    // create a new XMLHttpRequest
-    var xhr = new XMLHttpRequest()
+  // make a GET request for the table info as soon as page opens
+  componentDidMount(){
+    this.handleGet();
+  }
 
-    // get a callback when the server responds
-    xhr.addEventListener('load', () => {
-      // update the state of the component with the result here
-      console.log(xhr.responseText)
+  // make GET request to the server
+  async handleGet(){
+    axios.get(serverURL).then(({data}) => {
+        console.log(data)
+    }).catch(error => {
+        console.log(error.response)
     })
-    // open the request with the verb and the url
-    xhr.open('GET', 'put our url here')
-    // send the request
-    xhr.send()
-    console.log("button clicked")
   }
 
   render() {
