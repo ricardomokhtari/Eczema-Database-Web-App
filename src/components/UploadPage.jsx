@@ -7,8 +7,8 @@ import './DataTable.css';
 import FileDialogue from './FileDialogue';
 import axios from 'axios';
 
-// var serverURL = "https://servlet-1.herokuapp.com/"
-var serverURL = "http://localhost:8080/LectureServlet/"
+var serverURL = "https://servlet-1.herokuapp.com/"
+//var serverURL = "http://localhost:8080/LectureServlet/"
 
 class UploadPage extends Component {
     /*
@@ -37,13 +37,7 @@ class UploadPage extends Component {
     }
 
     handlePost(){
-        axios.post(serverURL, 
-            {
-                dateUploaded: this.state.date, 
-                region: this.state.region, 
-                score: this.state.score, 
-                image: this.state.image
-            }).then(response => {
+        axios.post(serverURL, this.state).then(response => {
             console.log(response.data)
         }).catch(error => {
             console.log(error.response)

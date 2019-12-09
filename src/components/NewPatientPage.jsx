@@ -3,8 +3,8 @@ import './NewPatientPage.css';
 import axios from 'axios';
 
 
-// var serverURL = "https://servlet-1.herokuapp.com/"
-var serverURL = "http://localhost:8080/LectureServlet/"
+var serverURL = "https://servlet-1.herokuapp.com/"
+//var serverURL = "http://localhost:8080/LectureServlet/"
 
 class NewPatientPage extends Component {
     constructor(props){
@@ -21,10 +21,7 @@ class NewPatientPage extends Component {
     }
 
     handlePost(){
-        axios.post(serverURL, 
-            {
-                newPatientInfo: this.state
-            }).then(response => {
+        axios.post(serverURL, this.state).then(response => {
             console.log(response.data)
         }).catch(error => {
             console.log(error.response)

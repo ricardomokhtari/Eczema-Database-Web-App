@@ -10,8 +10,8 @@ import {
 } from "react-router-dom";
 import axios from 'axios';
 
-// var serverURL = "https://servlet-1.herokuapp.com/"
-var serverURL = "http://localhost:8080/LectureServlet/"
+var serverURL = "https://servlet-1.herokuapp.com/"
+// var serverURL = "http://localhost:8080/LectureServlet/"
 
 class Homepage extends Component {
 
