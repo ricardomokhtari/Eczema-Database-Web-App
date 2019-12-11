@@ -46,10 +46,10 @@ class Homepage extends Component {
 
     const rows = [
       [
-        '1234',
+        '1647',
         'M',
         '01/01/1985',
-        '65',
+        '56',
         '24/11/2019',
         <div className="btn-group" role="group" aria-label="Basic example">
           <Router forceRefresh = {true}>
@@ -66,10 +66,21 @@ class Homepage extends Component {
       ],
       [
         '1234',
-        'M',
-        '01/01/1985',
-        '65',
+        'F',
+        '12/03/1995',
+        '34',
         '24/11/2019',
+        <div className="btn-group" role="group" aria-label="Basic example">
+          <button type="button" className="btn btn-primary">View</button>
+          <button type="button" className="btn btn-primary">Upload</button>
+        </div>
+      ],
+      [
+        '7483',
+        'M',
+        '02/12/1956',
+        '24',
+        '24/04/2019',
         <div className="btn-group" role="group" aria-label="Basic example">
           <button type="button" className="btn btn-primary">View</button>
           <button type="button" className="btn btn-primary">Upload</button>
@@ -98,44 +109,33 @@ class Homepage extends Component {
         </div>
       ],
       [
-        '1234',
-        'M',
-        '01/01/1985',
-        '65',
-        '24/11/2019',
+        '1297',
+        'F',
+        '02/02/1957',
+        '36',
+        '24/12/2019',
         <div className="btn-group" role="group" aria-label="Basic example">
           <button type="button" className="btn btn-primary">View</button>
           <button type="button" className="btn btn-primary">Upload</button>
         </div>
       ],
       [
-        '1234',
-        'M',
-        '01/01/1985',
-        '65',
-        '24/11/2019',
+        '3829',
+        'F',
+        '01/03/1991',
+        '56',
+        '03/03/1999',
         <div className="btn-group" role="group" aria-label="Basic example">
           <button type="button" className="btn btn-primary">View</button>
           <button type="button" className="btn btn-primary">Upload</button>
         </div>
       ],
       [
-        '1234',
+        '5128',
         'M',
-        '01/01/1985',
+        '05/05/1985',
         '65',
-        '24/11/2019',
-        <div className="btn-group" role="group" aria-label="Basic example">
-          <button type="button" className="btn btn-primary">View</button>
-          <button type="button" className="btn btn-primary">Upload</button>
-        </div>
-      ],
-      [
-        '1234',
-        'M',
-        '01/01/1985',
-        '65',
-        '24/11/2019',
+        '27/03/2017',
         <div className="btn-group" role="group" aria-label="Basic example">
           <button type="button" className="btn btn-primary">View</button>
           <button type="button" className="btn btn-primary">Upload</button>
