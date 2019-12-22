@@ -6,7 +6,7 @@ Over-EASI is a web app interface for clinicians and researchers to upload and ma
 
 Over-EASI was built with React, Bootstrap, Java and PostgreSQL.
 
-## Authors
+# Authors
 ### Amar Singh Dhanda
 ### Hia Ming
 ### Ricardo Mokhtari
