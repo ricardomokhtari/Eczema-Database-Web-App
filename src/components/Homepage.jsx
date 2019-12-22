@@ -16,10 +16,16 @@ var serverURL = "http://localhost:8080/LectureServlet/"
 var rows = [];
 
 class Homepage extends Component {
+  // State of the homepage component is just the list
+  // of patients and their info
+  // Therefore the state just contains an empty array, which is filled later
   state = {
     patients: [null]
   };
 
+  // we need to bind this in the handleget method to the homepage
+  // component otherwise it returns a reference to the window object
+  // instead
   constructor(props) {
     super(props);
     this.handleGet = this.handleGet.bind(this);  
@@ -33,15 +39,24 @@ class Homepage extends Component {
   // make GET request to the server
   async handleGet(){
     axios.get(serverURL).then(({data}) => {
+      // each line comes in as string, we parse the lines
+      // using split
       const lines = data.split("\n");
 
+      // make an empty array
       var list = []
 
+      // since the data comes in as a string, we have to convert the
+      // string to JSON to access the fields.
+      // we use JSON.parse to do this
+      // we create a patient object for each input line and add it to a list
       for(var i=0;i<lines.length-1;i++){
         var patient = JSON.parse(lines[i]);
         list.push(patient);
       }
 
+      // here we create the rows of the table, each contains the info about
+      // each patient and the action buttons
       for(var i = 0; i<list.length; i++){
         rows.push(
           [
@@ -65,6 +80,7 @@ class Homepage extends Component {
           ]);
         }
 
+        // we set the state of the homepage component to the rows we just made
         this.setState({patients: rows});
 
       }).catch(error => {
