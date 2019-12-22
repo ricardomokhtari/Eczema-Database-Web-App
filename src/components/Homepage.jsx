@@ -13,38 +13,63 @@ import axios from 'axios';
 //var serverURL = "https://servlet-1.herokuapp.com/"
 var serverURL = "http://localhost:8080/LectureServlet/"
 
+var rows = [];
+
 class Homepage extends Component {
   state = {
-    id: null, 
-    Sex: null, 
-    DOB: null, 
-    latestScore: null, 
-    lastUpdated: null
+    patients: [null]
   };
 
   constructor(props) {
     super(props);
-    this.handleGet = this.handleGet.bind(this);
+    this.handleGet = this.handleGet.bind(this);  
   }
 
   // make a GET request for the table info as soon as page opens
-  componentDidMount(){
+  componentWillMount(){
     this.handleGet();
   }
 
   // make GET request to the server
   async handleGet(){
     axios.get(serverURL).then(({data}) => {
-        this.setState({
-          id: data.id,
-          Sex: data.sex,
-          DOB: data.DOB,
-          latestScore: data.latestSeverityScore,
-          lastUpdated: data.lastUpdated
-        });
-    }).catch(error => {
-        console.log(error.response)
-    })
+      const lines = data.split("\n");
+
+      var list = []
+
+      for(var i=0;i<lines.length-1;i++){
+        var patient = JSON.parse(lines[i]);
+        list.push(patient);
+      }
+
+      for(var i = 0; i<list.length; i++){
+        rows.push(
+          [
+            String(list[i].id), 
+            String(list[i].sex), 
+            String(list[i].DOB), 
+            String(list[i].latestSeverityScore), 
+            String(list[i].lastUpdated),
+            <div className="btn-group" role="group" aria-label="Basic example">
+              <Router forceRefresh = {true}>
+                <Link to="/viewpage">
+                  <button type="button" className="btn btn-primary">View</button>
+                </Link>
+              </Router>
+              <Router forceRefresh = {true}>
+                <Link to="/upload">
+                  <button type="button" className="btn btn-primary">Upload</button>
+                </Link>
+              </Router>
+            </div>
+          ]);
+        }
+
+        this.setState({patients: rows});
+
+      }).catch(error => {
+          console.log(error.response)
+      })
   }
 
   render() {
@@ -55,28 +80,6 @@ class Homepage extends Component {
       'Latest Severity Score',
       'Last Updated',
       'Actions'
-    ];
-
-    const rows = [
-      [
-        this.state.id,
-        this.state.Sex,
-        this.state.DOB,
-        this.state.latestScore,
-        this.state.lastUpdated,
-        <div className="btn-group" role="group" aria-label="Basic example">
-          <Router forceRefresh = {true}>
-            <Link to="/viewpage">
-              <button type="button" className="btn btn-primary">View</button>
-            </Link>
-          </Router>
-          <Router forceRefresh = {true}>
-            <Link to="/upload">
-              <button type="button" className="btn btn-primary">Upload</button>
-            </Link>
-          </Router>
-        </div>
-      ]
     ];
 
     return (
