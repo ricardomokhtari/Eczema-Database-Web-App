@@ -14,6 +14,13 @@ import axios from 'axios';
 var serverURL = "http://localhost:8080/LectureServlet/"
 
 class Homepage extends Component {
+  state = {
+    id: null, 
+    Sex: null, 
+    DOB: null, 
+    latestScore: null, 
+    lastUpdated: null
+  };
 
   constructor(props) {
     super(props);
@@ -28,7 +35,13 @@ class Homepage extends Component {
   // make GET request to the server
   async handleGet(){
     axios.get(serverURL).then(({data}) => {
-        console.log(data)
+        this.setState({
+          id: data.id,
+          Sex: data.sex,
+          DOB: data.DOB,
+          latestScore: data.latestSeverityScore,
+          lastUpdated: data.lastUpdated
+        });
     }).catch(error => {
         console.log(error.response)
     })
@@ -46,15 +59,15 @@ class Homepage extends Component {
 
     const rows = [
       [
-        '1647',
-        'M',
-        '01/01/1985',
-        '56',
-        '24/11/2019',
+        this.state.id,
+        this.state.Sex,
+        this.state.DOB,
+        this.state.latestScore,
+        this.state.lastUpdated,
         <div className="btn-group" role="group" aria-label="Basic example">
           <Router forceRefresh = {true}>
             <Link to="/viewpage">
-              <button onClick = {this.handleGet} type="button" className="btn btn-primary">View</button>
+              <button type="button" className="btn btn-primary">View</button>
             </Link>
           </Router>
           <Router forceRefresh = {true}>
@@ -62,83 +75,6 @@ class Homepage extends Component {
               <button type="button" className="btn btn-primary">Upload</button>
             </Link>
           </Router>
-        </div>
-      ],
-      [
-        '1234',
-        'F',
-        '12/03/1995',
-        '34',
-        '22/09/2019',
-        <div className="btn-group" role="group" aria-label="Basic example">
-          <button type="button" className="btn btn-primary">View</button>
-          <button type="button" className="btn btn-primary">Upload</button>
-        </div>
-      ],
-      [
-        '7483',
-        'M',
-        '02/12/1956',
-        '24',
-        '12/04/2019',
-        <div className="btn-group" role="group" aria-label="Basic example">
-          <button type="button" className="btn btn-primary">View</button>
-          <button type="button" className="btn btn-primary">Upload</button>
-        </div>
-      ],
-      [
-        '1234',
-        'M',
-        '01/01/1985',
-        '65',
-        '17/11/2019',
-        <div className="btn-group" role="group" aria-label="Basic example">
-          <button type="button" className="btn btn-primary">View</button>
-          <button type="button" className="btn btn-primary">Upload</button>
-        </div>
-      ],
-      [
-        '4328',
-        'M',
-        '01/01/1985',
-        '65',
-        '09/11/2019',
-        <div className="btn-group" role="group" aria-label="Basic example">
-          <button type="button" className="btn btn-primary">View</button>
-          <button type="button" className="btn btn-primary">Upload</button>
-        </div>
-      ],
-      [
-        '1297',
-        'F',
-        '02/02/1957',
-        '36',
-        '24/12/2019',
-        <div className="btn-group" role="group" aria-label="Basic example">
-          <button type="button" className="btn btn-primary">View</button>
-          <button type="button" className="btn btn-primary">Upload</button>
-        </div>
-      ],
-      [
-        '3829',
-        'F',
-        '01/03/1991',
-        '56',
-        '03/03/2019',
-        <div className="btn-group" role="group" aria-label="Basic example">
-          <button type="button" className="btn btn-primary">View</button>
-          <button type="button" className="btn btn-primary">Upload</button>
-        </div>
-      ],
-      [
-        '5128',
-        'M',
-        '05/05/1985',
-        '65',
-        '27/03/2017',
-        <div className="btn-group" role="group" aria-label="Basic example">
-          <button type="button" className="btn btn-primary">View</button>
-          <button type="button" className="btn btn-primary">Upload</button>
         </div>
       ]
     ];
