@@ -1,3 +1,5 @@
+// Reference 3 - taken from https://codepen.io/rkotze/pen/zjRXYr
+
 import React, { Component } from 'react';
 
 function buildFileSelector(){
@@ -27,3 +29,5 @@ class FileDialogue extends Component {
 }
  
 export default FileDialogue;
+
+// end of reference 3
