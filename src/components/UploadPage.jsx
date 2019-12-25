@@ -25,6 +25,7 @@ class UploadPage extends Component {
         date: null,
         region: null,
         score: null,
+        preview: null,
         image: null
     };
 
@@ -37,7 +38,7 @@ class UploadPage extends Component {
     }
 
     handlePost(){
-        axios.post(serverURL, this.state).then(response => {
+        axios.post(serverURL, {date: this.state.date, region: this.state.region, score: this.state.score, image: this.state.image}).then(response => {
             console.log(response.data)
         }).catch(error => {
             console.log(error.response)
@@ -61,7 +62,8 @@ class UploadPage extends Component {
 
     // get image from file browser, set image field to image selected
     getImage(event){
-        this.setState({image: URL.createObjectURL(event.target.files[0])});
+        this.setState({image: event.target.files[0]})
+        this.setState({preview: URL.createObjectURL(event.target.files[0])});
     }
 
     // returns date that user inputs in the date input box (as a string)
@@ -292,7 +294,7 @@ class UploadPage extends Component {
                         <h5>Score: {this.state.score}</h5>
                     </div>
                     <div className = "adjusted">
-                        <img className="preview" src={this.state.image} alt = ""/>
+                        <img className="preview" src={this.state.preview} alt = ""/>
                         <input type="file" onChange={this.getImage}/>
                     </div>
                     <div className = "adjusted">
