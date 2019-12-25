@@ -51,12 +51,18 @@ class UploadPage extends Component {
         this.handleUpload = this.handleUpload.bind(this);
         this.handleGet = this.handleGet.bind(this);
         this.handlePost = this.handlePost.bind(this);
+        this.getImage = this.getImage.bind(this);
     }
 
     // function that sets side bar to expanded if expand button clicked
     onToggle = (expanded) => {
         this.setState({ expanded: expanded });
     };
+
+    // get image from file browser, set image field to image selected
+    getImage(event){
+        this.setState({image: URL.createObjectURL(event.target.files[0])});
+    }
 
     // returns date that user inputs in the date input box (as a string)
     getDate(){
@@ -287,7 +293,8 @@ class UploadPage extends Component {
                         <h5>Score: {this.state.score}</h5>
                     </div>
                     <div>
-                        <FileDialogue></FileDialogue>                  
+                        <img className="preview" src={this.state.image} alt = ""/>
+                        <input type="file" onChange={this.getImage}/>
                     </div>
                     <div>
                         <button onClick = {this.handleUpload} className = "btn btn-info m-2">Upload Image and Score</button>

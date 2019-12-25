@@ -32,7 +32,7 @@ class Homepage extends Component {
   }
 
   // make a GET request for the table info as soon as page opens
-  componentWillMount(){
+  componentDidMount(){
     this.handleGet();
   }
 
@@ -47,7 +47,7 @@ class Homepage extends Component {
       var list = []
 
       // since the data comes in as a string, we have to convert the
-      // string to JSON to access the fields.
+      // string to JSON to access the patient fields.
       // we use JSON.parse to do this
       // we create a patient object for each input line and add it to a list
       for(var i=0;i<lines.length-1;i++){
