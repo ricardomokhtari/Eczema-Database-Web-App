@@ -1,5 +1,6 @@
 .Inline {
     display: flex;
+    padding-top: 2vh;
 }
 
 .Input {
@@ -23,6 +24,10 @@
 }
 
 .preview{
-    height: 10vh;
-    width: 10vh;
+    height: 15vh;
+    width: 15vh;
+}
+
+.adjusted{
+    padding-top: 2vh;
 }

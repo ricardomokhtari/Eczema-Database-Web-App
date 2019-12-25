@@ -292,11 +292,11 @@ class UploadPage extends Component {
                     <div className = "Inline">
                         <h5>Score: {this.state.score}</h5>
                     </div>
-                    <div>
+                    <div className = "adjusted">
                         <img className="preview" src={this.state.image} alt = ""/>
                         <input type="file" onChange={this.getImage}/>
                     </div>
-                    <div>
+                    <div className = "adjusted">
                         <button onClick = {this.handleUpload} className = "btn btn-info m-2">Upload Image and Score</button>
                     </div>
                 </div>
