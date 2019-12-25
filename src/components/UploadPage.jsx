@@ -128,7 +128,6 @@ class UploadPage extends Component {
         let date = this.getDate();
         let region = this.getRegion();
         let score = this.getScore();
-        //let image = this.getImage(); (getImage() function not yet written)
         this.setState({
             date: date,
             region: region,
