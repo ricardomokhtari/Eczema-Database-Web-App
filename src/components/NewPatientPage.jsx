@@ -11,10 +11,11 @@ class NewPatientPage extends Component {
       super(props);
       this.state = {
         firstname: null,
-        lastname: null,
+        middlename: null,
+        surname: null,
         sex: null,
         ethnicity: null,
-        dateofbirth: null
+        dob: null
       };
       this.handlePost = this.handlePost.bind(this);
       this.handleUpload = this.handleUpload.bind(this);
@@ -31,10 +32,11 @@ class NewPatientPage extends Component {
     handleUpload(e){
         this.setState({
             firstname: this.refs.firstname.value,
-            lastname: this.refs.lastname.value,
+            middlename: this.refs.middlename.value,
+            surname: this.refs.surname.value,
             sex: this.refs.sex.value,
             ethnicity: this.refs.ethnicity.value,
-            dateofbirth: this.refs.dateofbirth.value
+            dob: this.refs.dob.value
         }, () => {
             this.handlePost();
         });
@@ -56,8 +58,12 @@ class NewPatientPage extends Component {
                     <input className = "Input" type="text" ref="firstname" placeholder = "John"/>
                 </div>
                 <div className = "Inline">
-                    <h5>Last Name</h5>
-                    <input className = "Input" type="text" ref="lastname" placeholder = "Smith"/>
+                    <h5>Middle Name</h5>
+                    <input className = "Input" type="text" ref="middlename" placeholder = "Richard"/>
+                </div>
+                <div className = "Inline">
+                    <h5>Surname</h5>
+                    <input className = "Input" type="text" ref="surname" placeholder = "Smith"/>
                 </div>
                 <div className = "Inline">
                     <h5>Sex</h5>
@@ -69,7 +75,7 @@ class NewPatientPage extends Component {
                 </div>
                 <div className = "Inline">
                     <h5>Date of Birth</h5>
-                    <input className = "Input" type="text" ref="dateofbirth" placeholder = "1/1/1990"/>
+                    <input className = "Input" type="text" ref="dob" placeholder = "1/1/1990"/>
                 </div>
                 <div>
                     <button className = "btn btn-info m-2" onClick={this.handleUpload}>Add Patient</button>
