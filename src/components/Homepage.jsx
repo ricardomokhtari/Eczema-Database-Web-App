@@ -59,6 +59,11 @@ class Homepage extends Component {
       // here we create the rows of the table, each contains the info about
       // each patient and the action buttons
       for(var i = 0; i<list.length; i++){
+        // rows is an array that contains information about each patient
+        // each patient is itself an array that contains that patient's information
+        // as its elements (rows is a 2D array)
+        
+        // we append each patient's information and action buttons to the rows array, as an array
         rows.push(
           [
             String(list[i].id), 
