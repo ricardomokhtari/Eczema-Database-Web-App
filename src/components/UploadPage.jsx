@@ -38,7 +38,11 @@ class UploadPage extends Component {
     }
 
     handlePost(){
-        axios.post(serverURL, {date: this.state.date, region: this.state.region, score: this.state.score, image: this.state.image}).then(response => {
+        axios.post(serverURL, {
+            date: this.state.date, 
+            region: this.state.region, 
+            score: this.state.score, 
+            image: this.state.image}).then(response => {
             console.log(response.data)
         }).catch(error => {
             console.log(error.response)
