@@ -283,8 +283,8 @@ class UploadPage extends Component {
                             <select className = "Input" id = "regionInput">
                                 <option value="head" name = "region">Head</option>
                                 <option value="trunk" name = "region">Trunk</option>
-                                <option value="leg" name = "region">Leg</option>
-                                <option value="back" name = "region">Back</option>
+                                <option value="upperExtremities" name = "region">Upper Extremities</option>
+                                <option value="lowerExtremities" name = "region">Lower Extremities</option>
                             </select>                    
                         </div>
                     </div>
