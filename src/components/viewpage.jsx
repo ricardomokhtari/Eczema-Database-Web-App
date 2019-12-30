@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import SideNav, { Toggle, Nav, NavItem, NavIcon, NavText } from '@trendmicro/react-sidenav';
 import './SideNav.css';
-import Tabs from 'react-bootstrap/Tabs'
-import Tab from 'react-bootstrap/Tab'
+// import Tabs from 'react-bootstrap/Tabs'
+// import Tab from 'react-bootstrap/Tab'
 import Record from './Record'
 import Records from './Records'
 
 class ViewPage extends Component {
+    
     state = {
         expanded: false,
         key: 'head',
@@ -34,7 +35,7 @@ class ViewPage extends Component {
                             regions
                         </h1>
                     </div>
-                    <Tabs activeKey={this.state.key} onSelect={k=>this.setState({key:k})}>
+                    {/* <Tabs defaultActiveKey={this.state.key} onSelect={k=>this.setState({key:k})}>
                       <Tab eventKey="head" title="head/neck">
                         <Records records={this.state.records}/>
                       </Tab>
@@ -44,7 +45,16 @@ class ViewPage extends Component {
                       </Tab>
                       <Tab eventKey="uextremities" title="u. extremities">
                       </Tab>
-                    </Tabs>
+                    </Tabs> */}
+
+                    <div className="btn-group" role="group" aria-label="Basic example">
+                        <button type="button" onClick = {() => this.setState({key:'head'})} className="btn btn-primary">head/neck</button>
+                        <button type="button" onClick = {() => this.setState({key:'trunk'})}className="btn btn-primary">trunk</button>
+                        <button type="button" onClick = {() => this.setState({key:'lowerlimb'})} className="btn btn-primary">l. extremities</button>
+                        <button type="button" onClick = {() => this.setState({key:'upperlimb'})}className="btn btn-primary">u. extremities</button>
+                    </div>
+
+                    <Records records={this.state.records}/>
     
                     <SideNav onToggle = {this.onToggle}>
                         <SideNav.Toggle />
