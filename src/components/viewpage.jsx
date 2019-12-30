@@ -5,17 +5,54 @@ import './SideNav.css';
 // import Tab from 'react-bootstrap/Tab'
 import Record from './Record'
 import Records from './Records'
+import axios from 'axios';
+
+var serverURL = "http://localhost:8080/LectureServlet/"
 
 class ViewPage extends Component {
     
-    state = {
-        expanded: false,
-        key: 'head',
-        records: [
-            {index: null},
-            {index: null}
-        ]
-    };
+    // state = {
+    //     expanded: false,
+    //     key: 'head',
+    // };
+
+    constructor(props) {
+        super(props);
+        this.state={
+            expanded: false,
+            key: 'head',
+            records:[]};
+        this.handleGet = this.handleGet.bind(this);  
+      }
+    
+    componentDidMount(){
+        this.handleGet();
+    }
+
+    async handleGet(){
+        this.setState({records:[]});
+        axios.get(serverURL).then(({data}) => {
+          const lines = data.split("\n");
+    
+          var list = []
+
+          for(var i=0;i<lines.length-1;i++){
+            var patient = JSON.parse(lines[i]);
+            list.push(patient);
+          }
+
+          for(var i=0;i<list.length;i++){
+            const newRecord = {index: i, patientid: list[i].id, DOB: list[i].DOB, latestSeverityScore: list[i].latestSeverityScore};
+            const records = [...this.state.records, newRecord];
+            this.setState({records});
+          }
+
+          console.log(this.state.key);
+
+        }).catch(error => {
+              console.log(error.response)
+        })
+    }
 
     onToggle = (expanded) => {
         this.setState({ expanded: expanded });
@@ -48,10 +85,10 @@ class ViewPage extends Component {
                     </Tabs> */}
 
                     <div className="btn-group" role="group" aria-label="Basic example">
-                        <button type="button" onClick = {() => this.setState({key:'head'})} className="btn btn-primary">head/neck</button>
-                        <button type="button" onClick = {() => this.setState({key:'trunk'})}className="btn btn-primary">trunk</button>
-                        <button type="button" onClick = {() => this.setState({key:'lowerlimb'})} className="btn btn-primary">l. extremities</button>
-                        <button type="button" onClick = {() => this.setState({key:'upperlimb'})}className="btn btn-primary">u. extremities</button>
+                        <button type="button" onClick = {() => {this.setState({key:'head'}); this.handleGet()}} className="btn btn-primary">head/neck</button>
+                        <button type="button" onClick = {() => {this.setState({key:'trunk'}); this.handleGet()}}className="btn btn-primary">trunk</button>
+                        <button type="button" onClick = {() => {this.setState({key:'lowerlimb'}); this.handleGet()}} className="btn btn-primary">l. extremities</button>
+                        <button type="button" onClick = {() => {this.setState({key:'upperlimb'}); this.handleGet()}}className="btn btn-primary">u. extremities</button>
                     </div>
 
                     <Records records={this.state.records}/>
