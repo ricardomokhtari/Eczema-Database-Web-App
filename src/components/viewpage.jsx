@@ -10,11 +10,6 @@ import axios from 'axios';
 var serverURL = "http://localhost:8080/LectureServlet/"
 
 class ViewPage extends Component {
-    
-    // state = {
-    //     expanded: false,
-    //     key: 'head',
-    // };
 
     constructor(props) {
         super(props);
@@ -72,17 +67,6 @@ class ViewPage extends Component {
                             regions
                         </h1>
                     </div>
-                    {/* <Tabs defaultActiveKey={this.state.key} onSelect={k=>this.setState({key:k})}>
-                      <Tab eventKey="head" title="head/neck">
-                        <Records records={this.state.records}/>
-                      </Tab>
-                      <Tab eventKey="trunk" title="trunk">
-                      </Tab>
-                      <Tab eventKey="lextremities" title="l. extremities">
-                      </Tab>
-                      <Tab eventKey="uextremities" title="u. extremities">
-                      </Tab>
-                    </Tabs> */}
 
                     <div className="btn-group" role="group" aria-label="Basic example">
                         <button type="button" onClick = {() => {this.setState({key:'head'}); this.handleGet()}} className="btn btn-primary">head/neck</button>
