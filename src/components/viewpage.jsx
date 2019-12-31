@@ -17,36 +17,38 @@ class ViewPage extends Component {
             expanded: false,
             key: 'headnneck',
             records:[]};
-        this.handleGet = this.handleGet.bind(this);  
+        this.handlePost = this.handlePost.bind(this);  
       }
     
     componentDidMount(){
-        this.handleGet();
+        this.handlePost();
     }
 
-    async handleGet(){
+    async handlePost(){
         this.setState({records:[]});
         axios.post(serverURL,this.state.key).then(response => {
 
-            const lines = response.data.split("\n");
+            var lines = []
+            var record = []
             var list = []
 
-            console.log(lines)
-
-            for(var i=0;i<lines.length-1;i++){
-                var record = JSON.parse(lines[i]);
+            if(Object.prototype.toString.call(response.data)=="[object String]"){
+                lines = response.data.split("\n");
+                for(var i=0;i<lines.length-1;i++){
+                    record = JSON.parse(lines[i]);
+                    list.push(record);
+                } 
+            } else if(Object.prototype.toString.call(response.data)=="[object Object]"){
+                lines.push(JSON.stringify(response.data));
+                record = JSON.parse(lines[0]);
                 list.push(record);
-            } 
-            
-            console.log(list)
+            }
 
             for(var i=0;i<list.length;i++){
                 const newRecord = {id: list[i].id, date: list[i].date, erythemascore: list[i].erythemascore, edemascore: list[i].edemascore, exclorationscore: list[i].exclorationscore, lichenificationscore: list[i].lichenificationscore, areascore:list[i].areascore, totalscore:list[i].totalscore, comments:list[i].comments};
                 const records = [...this.state.records, newRecord];
                 this.setState({records});
             }
-
-            console.log(this.state);
 
             }).catch(error => {
                 console.log(error.response)
@@ -73,10 +75,10 @@ class ViewPage extends Component {
                     </div>
 
                     <div className="btn-group" role="group" aria-label="Basic example">
-                        <button type="button" onClick = {() => {this.setState({key:'headnneck'}); this.handleGet()}} className="btn btn-primary">head/neck</button>
-                        <button type="button" onClick = {() => {this.setState({key:'trunk'}); this.handleGet()}}className="btn btn-primary">trunk</button>
-                        <button type="button" onClick = {() => {this.setState({key:'lowerlimb'}); this.handleGet()}} className="btn btn-primary">l. extremities</button>
-                        <button type="button" onClick = {() => {this.setState({key:'upperlimb'}); this.handleGet()}}className="btn btn-primary">u. extremities</button>
+                        <button type="button" onClick = {() => {this.setState({key:'headnneck'},()=>{this.handlePost()}); }} className="btn btn-primary">head/neck</button>
+                        <button type="button" onClick = {() => {this.setState({key:'trunk'},()=>{this.handlePost()}); }} className="btn btn-primary">trunk</button>
+                        <button type="button" onClick = {() => {this.setState({key:'lowerlimb'},()=>{this.handlePost()}); }} className="btn btn-primary">l. extremities</button>
+                        <button type="button" onClick = {() => {this.setState({key:'upperlimb'},()=>{this.handlePost()}); }}className="btn btn-primary">u. extremities</button>
                     </div>
 
                     <Records records={this.state.records}/>
