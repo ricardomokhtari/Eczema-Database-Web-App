@@ -8,7 +8,7 @@ import FileDialogue from './FileDialogue';
 import axios from 'axios';
 
 // var serverURL = "https://servlet-1.herokuapp.com/"
-var serverURL = "http://localhost:8080/LectureServlet/"
+var serverURL = "http://localhost:8080/LectureServlet/upload"
 
 class UploadPage extends Component {
     /*
