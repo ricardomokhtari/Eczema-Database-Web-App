@@ -7,7 +7,7 @@ import Record from './Record'
 import Records from './Records'
 import axios from 'axios';
 
-var serverURL = "http://localhost:8080/LectureServlet/"
+var serverURL = "http://localhost:8080/LectureServlet/viewpage"
 
 class ViewPage extends Component {
 
@@ -15,7 +15,7 @@ class ViewPage extends Component {
         super(props);
         this.state={
             expanded: false,
-            key: 'head',
+            key: 'headnneck',
             records:[]};
         this.handleGet = this.handleGet.bind(this);  
       }
@@ -26,18 +26,18 @@ class ViewPage extends Component {
 
     async handleGet(){
         this.setState({records:[]});
-        axios.get(serverURL).then(({data}) => {
+        axios.post(serverURL,this.state.key).then(({data}) => {
           const lines = data.split("\n");
     
           var list = []
 
           for(var i=0;i<lines.length-1;i++){
-            var patient = JSON.parse(lines[i]);
-            list.push(patient);
+            var record = JSON.parse(lines[i]);
+            list.push(record);
           }
 
           for(var i=0;i<list.length;i++){
-            const newRecord = {index: i, patientid: list[i].id, DOB: list[i].DOB, latestSeverityScore: list[i].latestSeverityScore};
+            const newRecord = {id: list[i].id, date: list[i].date, erythemascore: list[i].erythemascore, edemascore: list[i].edemascore, exclorationscore: list[i].exclorationscore, lichenificationscore: list[i].lichenificationscore, areascore:list[i].areascore,totalscore:list[i].totalscore,comments:list[i].comments};
             const records = [...this.state.records, newRecord];
             this.setState({records});
           }
@@ -69,7 +69,7 @@ class ViewPage extends Component {
                     </div>
 
                     <div className="btn-group" role="group" aria-label="Basic example">
-                        <button type="button" onClick = {() => {this.setState({key:'head'}); this.handleGet()}} className="btn btn-primary">head/neck</button>
+                        <button type="button" onClick = {() => {this.setState({key:'headnneck'}); this.handleGet()}} className="btn btn-primary">head/neck</button>
                         <button type="button" onClick = {() => {this.setState({key:'trunk'}); this.handleGet()}}className="btn btn-primary">trunk</button>
                         <button type="button" onClick = {() => {this.setState({key:'lowerlimb'}); this.handleGet()}} className="btn btn-primary">l. extremities</button>
                         <button type="button" onClick = {() => {this.setState({key:'upperlimb'}); this.handleGet()}}className="btn btn-primary">u. extremities</button>

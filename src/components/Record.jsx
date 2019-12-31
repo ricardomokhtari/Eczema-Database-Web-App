@@ -13,18 +13,18 @@ class Record extends Component{
         ];
 
         const rows = [
-            [this.props.records.patientid,
-            this.props.records.patientid,
-            this.props.records.patientid,
-            this.props.records.patientid,
-            this.props.records.patientid]
+            [this.props.records.erythemascore,
+            this.props.records.edemascore,
+            this.props.records.exclorationscore,
+            this.props.records.lichenificationscore,
+            this.props.records.areascore]
         ];
 
         return(
             <React.Fragment>
                 <div className="Inline">
                     <div>
-                        Date Uploaded: {this.props.records.DOB}
+                        Date Uploaded: {this.props.records.date}
                     </div>
                     <div>
                         
@@ -35,7 +35,7 @@ class Record extends Component{
                 </div>
                 <div className="Inline">
                     <div>
-                        Score: {this.props.records.latestSeverityScore}
+                        Score: {this.props.records.totalscore}
                     </div>
                     <div>
                         
@@ -43,7 +43,7 @@ class Record extends Component{
                 </div>
                 <div className="Inline">
                     <div>
-                        Comments: 
+                        Comments: {this.props.records.comments}
                     </div>
                     <div>
                         -
