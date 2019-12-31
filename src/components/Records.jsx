@@ -6,7 +6,7 @@ class records extends Component{
         return(
             <div>
                 {this.props.records.map(record => (
-                <Record key = {records.index} records = {record}>
+                <Record key = {records.id} records = {record}>
                 </Record>
             ))}
             </div>
