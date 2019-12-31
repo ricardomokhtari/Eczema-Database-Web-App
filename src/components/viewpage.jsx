@@ -26,27 +26,31 @@ class ViewPage extends Component {
 
     async handleGet(){
         this.setState({records:[]});
-        axios.post(serverURL,this.state.key).then(({data}) => {
-          const lines = data.split("\n");
-    
-          var list = []
+        axios.post(serverURL,this.state.key).then(response => {
 
-          for(var i=0;i<lines.length-1;i++){
-            var record = JSON.parse(lines[i]);
-            list.push(record);
-          }
+            const lines = response.data.split("\n");
+            var list = []
 
-          for(var i=0;i<list.length;i++){
-            const newRecord = {id: list[i].id, date: list[i].date, erythemascore: list[i].erythemascore, edemascore: list[i].edemascore, exclorationscore: list[i].exclorationscore, lichenificationscore: list[i].lichenificationscore, areascore:list[i].areascore,totalscore:list[i].totalscore,comments:list[i].comments};
-            const records = [...this.state.records, newRecord];
-            this.setState({records});
-          }
+            console.log(lines)
 
-          console.log(this.state.key);
+            for(var i=0;i<lines.length-1;i++){
+                var record = JSON.parse(lines[i]);
+                list.push(record);
+            } 
+            
+            console.log(list)
 
-        }).catch(error => {
-              console.log(error.response)
-        })
+            for(var i=0;i<list.length;i++){
+                const newRecord = {id: list[i].id, date: list[i].date, erythemascore: list[i].erythemascore, edemascore: list[i].edemascore, exclorationscore: list[i].exclorationscore, lichenificationscore: list[i].lichenificationscore, areascore:list[i].areascore, totalscore:list[i].totalscore, comments:list[i].comments};
+                const records = [...this.state.records, newRecord];
+                this.setState({records});
+            }
+
+            console.log(this.state);
+
+            }).catch(error => {
+                console.log(error.response)
+            })
     }
 
     onToggle = (expanded) => {

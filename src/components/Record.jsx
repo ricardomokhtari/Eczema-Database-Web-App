@@ -43,10 +43,10 @@ class Record extends Component{
                 </div>
                 <div className="Inline">
                     <div>
-                        Comments: {this.props.records.comments}
+                        Comments: 
                     </div>
                     <div>
-                        -
+                        {this.props.records.comments}
                     </div>
                 </div>
             </React.Fragment>
