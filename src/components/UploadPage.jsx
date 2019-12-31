@@ -42,7 +42,7 @@ class UploadPage extends Component {
             date: this.state.date, 
             region: this.state.region, 
             score: this.state.score, 
-            image: this.state.image}).then(response => {
+            image: this.state.image}, 'Access-Control-Allow-Origin', '*').then(response => {
             console.log(response.data)
         }).catch(error => {
             console.log(error.response)

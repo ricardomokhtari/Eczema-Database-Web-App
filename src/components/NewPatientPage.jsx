@@ -20,9 +20,16 @@ class NewPatientPage extends Component {
       this.handlePost = this.handlePost.bind(this);
       this.handleUpload = this.handleUpload.bind(this);
     }
-
+    
     handlePost(){
-        axios.post(serverURL, this.state).then(response => {
+        let config = {
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Methods': 'POST, GET, OPTIONS',
+            'Access-Control-Allow-Headers': 'X-PINGOTHER, Content-Type',
+            'Content-Type': 'text/plain',
+            'Access-Control-Max-Age': 86400
+        }
+        axios.post(serverURL, {gello: "sdkjfsk"}, {headers: config}).then(response => {
             console.log(response.data)
         }).catch(error => {
             console.log(error.response)
