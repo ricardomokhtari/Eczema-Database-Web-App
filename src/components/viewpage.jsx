@@ -26,7 +26,7 @@ class ViewPage extends Component {
 
     async handlePost(){
         this.setState({records:[]});
-        axios.post(serverURL,this.state.key).then(response => {
+        axios.post(serverURL,this.state.key,'Access-Control-Allow-Origin','*').then(response => {
 
             var lines = []
             var record = []
