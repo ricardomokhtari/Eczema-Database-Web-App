@@ -21,14 +21,7 @@ class NewPatientPage extends Component {
     
     //Make POST request to server
     async handlePost(){
-        let config = {
-            'Access-Control-Allow-Origin': '*',
-            'Access-Control-Allow-Methods': 'POST, GET, OPTIONS',
-            'Access-Control-Allow-Headers': 'X-PINGOTHER, Content-Type',
-            'Content-Type': 'text/plain',
-            'Access-Control-Max-Age': 86400
-        }
-        axios.post(serverURL, this.state.patientinfo, config).then(response => {
+        axios.post(serverURL,JSON.stringify(this.state.patientinfo),'Access-Control-Allow-Origin','*').then(response => {
             console.log(response.data)
         }).catch(error => {
             console.log(error.response)
