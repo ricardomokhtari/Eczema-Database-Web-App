@@ -8,7 +8,7 @@ import FileDialogue from './FileDialogue';
 import axios from 'axios';
 
 // var serverURL = "https://servlet-1.herokuapp.com/"
-var serverURL = "http://localhost:8080/LectureServlet/"
+var serverURL = "http://localhost:8080/LectureServlet/upload"
 
 class UploadPage extends Component {
     /*
@@ -42,7 +42,7 @@ class UploadPage extends Component {
             date: this.state.date, 
             region: this.state.region, 
             score: this.state.score, 
-            image: this.state.image}).then(response => {
+            image: this.state.image}, 'Access-Control-Allow-Origin', '*').then(response => {
             console.log(response.data)
         }).catch(error => {
             console.log(error.response)

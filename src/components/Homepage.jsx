@@ -39,7 +39,7 @@ class Homepage extends Component {
 
   // make GET request to the server
   async handleGet(){
-    axios.get(serverURL).then(({data}) => {
+    axios.get(serverURL, 'Access-Control-Allow-Origin', '*').then(({data}) => {
       // each line comes in as string, we parse the lines
       // using split
       const lines = data.split("\n");
