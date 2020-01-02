@@ -4,6 +4,7 @@ import './DataTable.css';
 
 class Record extends Component{
     render(){
+        //Labels for each column
         const headings = [
             'Erythema',
             'Edema',
@@ -12,6 +13,8 @@ class Record extends Component{
             'Area Score',
         ];
 
+        //Values for each row
+        //Values taken from parent
         const rows = [
             [this.props.records.erythemascore,
             this.props.records.edemascore,
