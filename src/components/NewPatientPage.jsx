@@ -7,21 +7,20 @@ import axios from 'axios';
 var serverURL = "http://localhost:8080/LectureServlet/newpatient"
 
 class NewPatientPage extends Component {
+
+    //The state of the NewPatientPage component consists of the patient information to be uploaded into the database
+    //Bind handlepost and handleupload methods to NewPatientPage
     constructor(props){
       super(props);
       this.state = {
-        firstname: null,
-        middlename: null,
-        surname: null,
-        sex: null,
-        ethnicity: null,
-        dob: null
+        patientinfo:[]
       };
       this.handlePost = this.handlePost.bind(this);
       this.handleUpload = this.handleUpload.bind(this);
     }
     
-    handlePost(){
+    //Make POST request to server
+    async handlePost(){
         let config = {
             'Access-Control-Allow-Origin': '*',
             'Access-Control-Allow-Methods': 'POST, GET, OPTIONS',
@@ -29,22 +28,24 @@ class NewPatientPage extends Component {
             'Content-Type': 'text/plain',
             'Access-Control-Max-Age': 86400
         }
-        axios.post(serverURL, {gello: "sdkjfsk"}, {headers: config}).then(response => {
+        axios.post(serverURL, this.state.patientinfo, config).then(response => {
             console.log(response.data)
         }).catch(error => {
             console.log(error.response)
         })
     }
 
+    //Set state to information entered then make POST request
     handleUpload(e){
-        this.setState({
+        const patientinfo = {
             firstname: this.refs.firstname.value,
             middlename: this.refs.middlename.value,
             surname: this.refs.surname.value,
             sex: this.refs.sex.value,
             ethnicity: this.refs.ethnicity.value,
             dob: this.refs.dob.value
-        }, () => {
+        }
+        this.setState({patientinfo}, () => {
             this.handlePost();
         });
     }
