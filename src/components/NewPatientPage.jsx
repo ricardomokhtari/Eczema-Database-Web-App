@@ -7,41 +7,39 @@ import axios from 'axios';
 var serverURL = "http://localhost:8080/LectureServlet/newpatient"
 
 class NewPatientPage extends Component {
-    // set state in constructor
+
+    //The state of the NewPatientPage component consists of the patient information to be uploaded into the database
+    //Bind handlepost and handleupload methods to NewPatientPage
     constructor(props){
       super(props);
       this.state = {
-        firstname: null,
-        middlename: null,
-        surname: null,
-        sex: null,
-        ethnicity: null,
-        dob: null
+        patientinfo:[]
       };
       // bind "this" so it returns a reference to the new patient page component
       this.handlePost = this.handlePost.bind(this);
       this.handleUpload = this.handleUpload.bind(this);
     }
     
-    // handlePOST makes POST request to backend server with state data
-    handlePost(){
-        axios.post(serverURL, JSON.stringify(this.state), 'Access-Control-Allow-Origin', '*').then(response => {
+    //Make POST request to server
+    async handlePost(){
+        axios.post(serverURL,JSON.stringify(this.state.patientinfo),'Access-Control-Allow-Origin','*').then(response => {
             console.log(response.data)
         }).catch(error => {
             console.log(error.response)
         })
     }
 
-    // handle upload updates and POSTs the state
+    //Set state to information entered then make POST request
     handleUpload(e){
-        this.setState({
+        const patientinfo = {
             firstname: this.refs.firstname.value,
             middlename: this.refs.middlename.value,
             surname: this.refs.surname.value,
             sex: this.refs.sex.value,
             ethnicity: this.refs.ethnicity.value,
             dob: this.refs.dob.value
-        }, () => {
+        }
+        this.setState({patientinfo}, () => {
             this.handlePost();
         });
     }
