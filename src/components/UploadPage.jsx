@@ -7,7 +7,8 @@ import './DataTable.css';
 import FileDialogue from './FileDialogue';
 import axios from 'axios';
 
-// var serverURL = "https://servlet-1.herokuapp.com/"
+// uncomment next line to access cloud servlet
+// var serverURL = "https://servlet-1.herokuapp.com/upload"
 var serverURL = "http://localhost:8080/LectureServlet/upload"
 
 class UploadPage extends Component {
@@ -17,6 +18,7 @@ class UploadPage extends Component {
         date: the date that the user enters
         region: the region that the user enters
         score: the total score that gets calculated
+        preview: image preview in browser
         image: the image that the user uploads
     */
 
@@ -28,15 +30,18 @@ class UploadPage extends Component {
         preview: null,
         image: null
     };
-
-    async handleGet(){
-        axios.get(serverURL).then(({data}) => {
-            console.log(data)
-        }).catch(error => {
-            console.log(error.response)
-        })
+    
+    // binding "this" in functions to UploadPage component
+    constructor(props){
+        super(props);
+        this.getScore = this.getScore.bind(this);
+        this.handleUpload = this.handleUpload.bind(this);
+        this.handleGet = this.handleGet.bind(this);
+        this.handlePost = this.handlePost.bind(this);
+        this.getImage = this.getImage.bind(this);
     }
 
+    // handlePOST makes a post request with the upload page state
     handlePost(){
         axios.post(serverURL, {
             date: this.state.date, 
@@ -47,16 +52,6 @@ class UploadPage extends Component {
         }).catch(error => {
             console.log(error.response)
         })
-    }
-    
-    // binding "this" in functions to UploadPage component
-    constructor(props){
-        super(props);
-        this.getScore = this.getScore.bind(this);
-        this.handleUpload = this.handleUpload.bind(this);
-        this.handleGet = this.handleGet.bind(this);
-        this.handlePost = this.handlePost.bind(this);
-        this.getImage = this.getImage.bind(this);
     }
 
     // function that sets side bar to expanded if expand button clicked

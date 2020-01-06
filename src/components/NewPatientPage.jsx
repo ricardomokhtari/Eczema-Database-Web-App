@@ -2,11 +2,12 @@ import React, { Component } from 'react';
 import './NewPatientPage.css';
 import axios from 'axios';
 
-
+// uncomment next line to access cloud servlet
 //var serverURL = "https://servlet-1.herokuapp.com/"
 var serverURL = "http://localhost:8080/LectureServlet/newpatient"
 
 class NewPatientPage extends Component {
+    // set state in constructor
     constructor(props){
       super(props);
       this.state = {
@@ -17,25 +18,21 @@ class NewPatientPage extends Component {
         ethnicity: null,
         dob: null
       };
+      // bind "this" so it returns a reference to the new patient page component
       this.handlePost = this.handlePost.bind(this);
       this.handleUpload = this.handleUpload.bind(this);
     }
     
+    // handlePOST makes POST request to backend server with state data
     handlePost(){
-        let config = {
-            'Access-Control-Allow-Origin': '*',
-            'Access-Control-Allow-Methods': 'POST, GET, OPTIONS',
-            'Access-Control-Allow-Headers': 'X-PINGOTHER, Content-Type',
-            'Content-Type': 'text/plain',
-            'Access-Control-Max-Age': 86400
-        }
-        axios.post(serverURL, {gello: "sdkjfsk"}, {headers: config}).then(response => {
+        axios.post(serverURL, JSON.stringify(this.state), 'Access-Control-Allow-Origin', '*').then(response => {
             console.log(response.data)
         }).catch(error => {
             console.log(error.response)
         })
     }
 
+    // handle upload updates and POSTs the state
     handleUpload(e){
         this.setState({
             firstname: this.refs.firstname.value,
@@ -56,7 +53,7 @@ class NewPatientPage extends Component {
                style={{
                   marginLeft: 64,
                   padding: '15px 20px 0 20px'
-              }}>
+                }}>
                 <div>
                     <h1>New Patient</h1>
                 </div>
