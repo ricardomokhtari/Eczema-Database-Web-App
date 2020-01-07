@@ -36,7 +36,6 @@ class UploadPage extends Component {
         super(props);
         this.getScore = this.getScore.bind(this);
         this.handleUpload = this.handleUpload.bind(this);
-        this.handleGet = this.handleGet.bind(this);
         this.handlePost = this.handlePost.bind(this);
         this.getImage = this.getImage.bind(this);
     }
