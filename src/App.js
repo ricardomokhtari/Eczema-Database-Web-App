@@ -9,6 +9,7 @@ import ViewPage from './components/viewpage';
 import UploadPage from './components/UploadPage';
 import NewPatientPage from './components/NewPatientPage';
 import LoginPage from './components/loginpage';
+import CreateAccount from './components/createAccount';
 
 class App extends Component {
     render () {
@@ -20,6 +21,9 @@ class App extends Component {
                     </Route>
                     <Route path = "/login" component = {LoginPage}>
                         <LoginPage/>
+                    </Route>
+                    <Route path = "/create" component = {CreateAccount}>
+                        <CreateAccount/>
                     </Route>
                     <Route path="/viewpage" component = {ViewPage}>
                         <ViewPage />
