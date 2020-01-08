@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Logo from './Tanaka_logo.png';
 import './loginpage.css';
+import axios from 'axios';
 
 var serverURL = "http://localhost:8080/LectureServlet/login"
 
@@ -12,8 +13,8 @@ class LoginPage extends Component {
 
     constructor(props){
         super(props);
-        this.getEmail = this.getEmail.bind(this);
-        this.getPassword = this.getPassword.bind(this);
+        this.handlePost = this.handlePost.bind(this);
+        this.handleUpload = this.handleUpload.bind(this);
     }
 
     async handlePost(){
