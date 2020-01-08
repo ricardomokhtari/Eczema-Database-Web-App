@@ -31,7 +31,9 @@ class LoginPage extends Component {
         this.setState(
             {
                 email: email, 
-                password: password}, () => {
+                password: password
+            }, 
+            () => {
             this.handlePost()
         })
     }
