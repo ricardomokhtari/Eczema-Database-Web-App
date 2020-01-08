@@ -55,10 +55,14 @@ class LoginPage extends Component {
                         <input type="text" ref="email" placeholder = "Email"/>
                     </div>
                     <div className = "inputs">
-                        <input type="text" ref="password" placeholder = "Password"/>
+                        <input type="password" ref="password" placeholder = "Password"/>
                     </div>
                     <div className = "inputs">
-                        <button className = "btn btn-info m-2" onClick = {this.handleUpload}>Login</button>
+                        <Router forceRefresh = {true}>
+                            <Link to="/">
+                                <button className = "btn btn-info m-2" onClick = {this.handleUpload}>Login</button>
+                            </Link>
+                        </Router>
                     </div>
                     <div className = "inputs">
                         <Router forceRefresh = {true}>
