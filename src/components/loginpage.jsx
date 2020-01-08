@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import Logo from './Tanaka_logo.png';
 import './loginpage.css';
 
+var serverURL = "http://localhost:8080/LectureServlet/login"
+
 class LoginPage extends Component {
     state = {
         email: "",
