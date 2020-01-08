@@ -8,6 +8,7 @@ import Homepage from './components/Homepage';
 import ViewPage from './components/viewpage';
 import UploadPage from './components/UploadPage';
 import NewPatientPage from './components/NewPatientPage';
+import LoginPage from './components/loginpage';
 
 class App extends Component {
     render () {
@@ -16,6 +17,9 @@ class App extends Component {
                 <Switch>
                     <Route exact path="/" component = {Homepage}>
                         <Homepage />
+                    </Route>
+                    <Route path = "/login" component = {LoginPage}>
+                        <LoginPage/>
                     </Route>
                     <Route path="/viewpage" component = {ViewPage}>
                         <ViewPage />
