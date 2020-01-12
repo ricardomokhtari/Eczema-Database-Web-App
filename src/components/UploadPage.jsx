@@ -26,7 +26,12 @@ class UploadPage extends Component {
         expanded: false,
         date: null,
         region: null,
-        score: null,
+        erythema: null,
+        edema: null,
+        excoriation: null,
+        lichenification: null,
+        areaScore: null,
+        totalScore: null,
         preview: null,
         image: null
     };
@@ -41,11 +46,16 @@ class UploadPage extends Component {
     }
 
     // handlePOST makes a post request with the upload page state
-    handlePost(){
+    async handlePost(){
         axios.post(serverURL, {
             date: this.state.date, 
-            region: this.state.region, 
-            score: this.state.score, 
+            region: this.state.region,
+            erythema: this.state.erythema,
+            edema: this.state.edema,
+            excoriation: this.state.excoriation,
+            lichenification: this.state.lichenification,
+            areaScore: this.state.areaScore, 
+            totalScore: this.state.score, 
             image: this.state.image}, 'Access-Control-Allow-Origin', '*').then(response => {
             console.log(response.data)
         }).catch(error => {
@@ -101,6 +111,11 @@ class UploadPage extends Component {
 
         // perform arithmetic
         const total = ((Erythema + Edema + Excoriation + Lichenification) * AreaScore * multiplier).toFixed(2);
+        this.setState({erythema: Erythema});
+        this.setState({edema: Edema});
+        this.setState({excoriation: Excoriation});
+        this.setState({lichenification: Lichenification});
+        this.setState({areaScore: AreaScore});
 
         this.setState({score: total});
 
@@ -275,10 +290,10 @@ class UploadPage extends Component {
                         <h5>Region</h5>
                         <div>
                             <select className = "Input" id = "regionInput">
-                                <option value="head" name = "region">Head</option>
+                                <option value="headnneck" name = "region">Head</option>
                                 <option value="trunk" name = "region">Trunk</option>
-                                <option value="upperExtremities" name = "region">Upper Extremities</option>
-                                <option value="lowerExtremities" name = "region">Lower Extremities</option>
+                                <option value="upperlimb" name = "region">Upper Extremities</option>
+                                <option value="lowerlimb" name = "region">Lower Extremities</option>
                             </select>                    
                         </div>
                     </div>
