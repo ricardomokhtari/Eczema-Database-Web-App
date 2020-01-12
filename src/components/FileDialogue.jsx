@@ -1,3 +1,5 @@
+// Reference 3 - taken from https://codepen.io/rkotze/pen/zjRXYr
+
 import React, { Component } from 'react';
 
 function buildFileSelector(){
@@ -14,12 +16,18 @@ class FileDialogue extends Component {
 
     handleFileSelect = (e) => {
         e.preventDefault();
-        this.fileSelector.click();
+        this.fileSelector.click();  
     }
 
     render(){
-        return <button className="btn btn-info m-2" href="" onClick={this.handleFileSelect}>Select Image</button>
+        return (
+            <React.Fragment>
+                <button className="btn btn-info m-2" href="" onClick={this.handleFileSelect}>Select Image</button>
+            </React.Fragment>
+        );
     }
 }
  
 export default FileDialogue;
+
+// end of reference 3

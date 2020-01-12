@@ -1,3 +1,5 @@
+// Reference 1 - taken from https://gist.github.com/ShopifyEng/8b2c00599aef241b29098dfd4c02ef84
+
 import * as React from 'react';
 import Cell from './Cell';
 import './DataTable.css';
@@ -54,3 +56,5 @@ export default class DataTable extends React.Component {
     );
   }
 }
+
+// end of reference 1

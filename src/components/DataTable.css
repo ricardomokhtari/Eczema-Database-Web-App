@@ -1,3 +1,5 @@
+/* Reference 1 - taken from https://gist.github.com/ShopifyEng/8b2c00599aef241b29098dfd4c02ef84 */
+
 .Table {
     border-spacing: 0px;
     box-shadow: 0 1px 0 0 rgba(22, 29, 37, 0.05);
@@ -23,3 +25,5 @@
     padding: 20px;
     text-align: center;
   }
+
+/* end of Reference 1 */

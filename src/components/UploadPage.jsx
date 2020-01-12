@@ -5,39 +5,64 @@ import './UploadPage.css';
 import DataTable from './DataTable';
 import './DataTable.css';
 import FileDialogue from './FileDialogue';
+import axios from 'axios';
+
+// uncomment next line to access cloud servlet
+// var serverURL = "https://servlet-1.herokuapp.com/upload"
+var serverURL = "http://localhost:8080/LectureServlet/upload"
 
 class UploadPage extends Component {
     /*
      the state of the UploadPage component consists of:
-     expanded: whether or not the side bar is expanded
-     date: the date that the user enters
-     region: the region that the user enters
-     score: the total score that gets calculated
+        expanded: whether or not the side bar is expanded
+        date: the date that the user enters
+        region: the region that the user enters
+        score: the total score that gets calculated
+        preview: image preview in browser
+        image: the image that the user uploads
     */
 
     state = {
         expanded: false,
         date: null,
         region: null,
-        score: null
+        score: null,
+        preview: null,
+        image: null
     };
     
-   // binding "this" in functions to UploadPage component
-   constructor(props){
+    // binding "this" in functions to UploadPage component
+    constructor(props){
         super(props);
         this.getScore = this.getScore.bind(this);
         this.handleUpload = this.handleUpload.bind(this);
+        this.handlePost = this.handlePost.bind(this);
+        this.getImage = this.getImage.bind(this);
     }
 
-    // Used for debugging state
-    componentDidMount(){
-        console.log(this.state);
+    // handlePOST makes a post request with the upload page state
+    handlePost(){
+        axios.post(serverURL, {
+            date: this.state.date, 
+            region: this.state.region, 
+            score: this.state.score, 
+            image: this.state.image}, 'Access-Control-Allow-Origin', '*').then(response => {
+            console.log(response.data)
+        }).catch(error => {
+            console.log(error.response)
+        })
     }
 
     // function that sets side bar to expanded if expand button clicked
     onToggle = (expanded) => {
         this.setState({ expanded: expanded });
     };
+
+    // get image from file browser, set image field to image selected
+    getImage(event){
+        this.setState({image: event.target.files[0]})
+        this.setState({preview: URL.createObjectURL(event.target.files[0])});
+    }
 
     // returns date that user inputs in the date input box (as a string)
     getDate(){
@@ -98,7 +123,7 @@ class UploadPage extends Component {
         return val; // return value of checked radio or undefined if none checked
     }
     
-    // function that updates state of uploadPage and POSTs the data to backend (incomplete)
+    // function that updates state of uploadPage and POSTs the data to backend
     handleUpload() {
         let date = this.getDate();
         let region = this.getRegion();
@@ -107,8 +132,8 @@ class UploadPage extends Component {
             date: date,
             region: region,
             score: score
-        }, () => {
-            console.log(this.state);
+        }, () => { // arrow function here waits for state to be updating before POSTing
+            this.handlePost();
         });
     }
 
@@ -252,8 +277,8 @@ class UploadPage extends Component {
                             <select className = "Input" id = "regionInput">
                                 <option value="head" name = "region">Head</option>
                                 <option value="trunk" name = "region">Trunk</option>
-                                <option value="leg" name = "region">Leg</option>
-                                <option value="back" name = "region">Back</option>
+                                <option value="upperExtremities" name = "region">Upper Extremities</option>
+                                <option value="lowerExtremities" name = "region">Lower Extremities</option>
                             </select>                    
                         </div>
                     </div>
@@ -266,10 +291,11 @@ class UploadPage extends Component {
                     <div className = "Inline">
                         <h5>Score: {this.state.score}</h5>
                     </div>
-                    <div>
-                        <FileDialogue></FileDialogue>                  
+                    <div className = "adjusted">
+                        <img className="preview" src={this.state.preview} alt = ""/>
+                        <input type="file" onChange={this.getImage}/>
                     </div>
-                    <div>
+                    <div className = "adjusted">
                         <button onClick = {this.handleUpload} className = "btn btn-info m-2">Upload Image and Score</button>
                     </div>
                 </div>
