@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-var serverURL = "http://localhost:8080/LectureServlet/create";
+//var serverURL = "http://localhost:8080/LectureServlet/create";
+var serverURL = "https://servlet-1.herokuapp.com/create";
 
 class CreateAccount extends Component {
     state = { 

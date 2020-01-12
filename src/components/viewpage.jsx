@@ -7,7 +7,8 @@ import Record from './Record'
 import Records from './Records'
 import axios from 'axios';
 
-var serverURL = "http://localhost:8080/LectureServlet/viewpage"
+// var serverURL = "http://localhost:8080/LectureServlet/viewpage"
+var serverURL = "https://servlet-1.herokuapp.com/";
 
 class ViewPage extends Component {
 

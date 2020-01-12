@@ -9,7 +9,8 @@ import {
     Link
 } from "react-router-dom";
 
-var serverURL = "http://localhost:8080/LectureServlet/login"
+// var serverURL = "http://localhost:8080/LectureServlet/login";
+var serverURL = "https://servlet-1.herokuapp.com/login";
 
 class LoginPage extends Component {
     state = {
