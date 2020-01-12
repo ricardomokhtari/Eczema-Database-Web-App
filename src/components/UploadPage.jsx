@@ -47,16 +47,7 @@ class UploadPage extends Component {
 
     // handlePOST makes a post request with the upload page state
     handlePost(){
-        axios.post(serverURL, JSON.stringify({
-            date: this.state.date, 
-            region: this.state.region,
-            erythema: this.state.erythema,
-            edema: this.state.edema,
-            excoriation: this.state.excoriation,
-            lichenification: this.state.lichenification,
-            areaScore: this.state.areaScore, 
-            totalScore: this.state.score, 
-            image: this.state.image}), 'Access-Control-Allow-Origin', '*').then(response => {
+        axios.post(serverURL, JSON.stringify(this.state), 'Access-Control-Allow-Origin', '*').then(response => {
             console.log(response.data)
         }).catch(error => {
             console.log(error.response)
