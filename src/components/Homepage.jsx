@@ -10,13 +10,13 @@ import {
 } from "react-router-dom";
 import axios from 'axios';
 
-//var serverURL = "https://servlet-1.herokuapp.com/"
-var serverURL = "http://localhost:8080/LectureServlet/"
+var serverURL = "https://servlet-1.herokuapp.com/"
+//var serverURL = "http://localhost:8080/LectureServlet/"
 
 // Declare rows as a global variable to be used by all methods
 var rows = [];
 
-class Homepage extends Component 
+class Homepage extends Component {
   // State of the homepage component is just the list
   // of patients and their info
   // Therefore the state just contains an empty array, which is filled later
