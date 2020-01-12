@@ -46,8 +46,8 @@ class UploadPage extends Component {
     }
 
     // handlePOST makes a post request with the upload page state
-    async handlePost(){
-        axios.post(serverURL, {
+    handlePost(){
+        axios.post(serverURL, JSON.stringify({
             date: this.state.date, 
             region: this.state.region,
             erythema: this.state.erythema,
@@ -56,7 +56,7 @@ class UploadPage extends Component {
             lichenification: this.state.lichenification,
             areaScore: this.state.areaScore, 
             totalScore: this.state.score, 
-            image: this.state.image}, 'Access-Control-Allow-Origin', '*').then(response => {
+            image: this.state.image}), 'Access-Control-Allow-Origin', '*').then(response => {
             console.log(response.data)
         }).catch(error => {
             console.log(error.response)
