@@ -8,8 +8,8 @@ import FileDialogue from './FileDialogue';
 import axios from 'axios';
 
 // uncomment next line to access cloud servlet
-var serverURL = "https://servlet-1.herokuapp.com/upload"
-// var serverURL = "http://localhost:8080/LectureServlet/upload"
+// var serverURL = "https://servlet-1.herokuapp.com/upload"
+var serverURL = "http://localhost:8080/LectureServlet/upload"
 
 class UploadPage extends Component {
     /*
@@ -46,7 +46,7 @@ class UploadPage extends Component {
     }
 
     // handlePOST makes a post request with the upload page state
-    handlePost(){
+    async handlePost(){
         axios.post(serverURL, JSON.stringify(this.state), 'Access-Control-Allow-Origin', '*').then(response => {
             console.log(response.data)
         }).catch(error => {
@@ -108,8 +108,9 @@ class UploadPage extends Component {
         this.setState({lichenification: Lichenification});
         this.setState({areaScore: AreaScore});
 
-        this.setState({score: total});
-
+        this.setState({totalScore: total});
+        
+        console.log(this.state);
         return total;
     }
 
@@ -137,7 +138,7 @@ class UploadPage extends Component {
         this.setState({
             date: date,
             region: region,
-            score: score
+            totalScore: score
         }, () => { // arrow function here waits for state to be updating before POSTing
             this.handlePost();
         });
@@ -295,7 +296,7 @@ class UploadPage extends Component {
                         <button onClick = {this.getScore} className = "btn btn-info m-2">Calculate total score</button>
                     </div>
                     <div className = "Inline">
-                        <h5>Score: {this.state.score}</h5>
+                        <h5>Score: {this.state.totalScore}</h5>
                     </div>
                     <div className = "adjusted">
                         <img className="preview" src={this.state.preview} alt = ""/>

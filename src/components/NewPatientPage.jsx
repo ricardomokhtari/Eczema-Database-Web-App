@@ -4,7 +4,7 @@ import axios from 'axios';
 
 // uncomment next line to access cloud servlet
 var serverURL = "https://servlet-1.herokuapp.com/newpatient";
-// var serverURL = "http://localhost:8080/LectureServlet/newpatient"
+//var serverURL = "http://localhost:8080/LectureServlet/newpatient"
 
 class NewPatientPage extends Component {
 
