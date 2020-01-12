@@ -10,7 +10,7 @@ import {
 } from "react-router-dom";
 
 // var serverURL = "http://localhost:8080/LectureServlet/login";
-var serverURL = "https://servlet-1.herokuapp.com/login";
+var serverURL = "https://servlet-1.herokuapp.com/";
 
 class LoginPage extends Component {
     state = {
@@ -60,7 +60,7 @@ class LoginPage extends Component {
                     </div>
                     <div className = "inputs">
                         <Router forceRefresh = {true}>
-                            <Link to="/">
+                            <Link to="/home">
                                 <button className = "btn btn-info m-2" onClick = {this.handleUpload}>Login</button>
                             </Link>
                         </Router>

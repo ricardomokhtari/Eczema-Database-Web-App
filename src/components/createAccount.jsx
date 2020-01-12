@@ -27,6 +27,7 @@ class CreateAccount extends Component {
         const email = this.refs.email.value;
         const temp = this.refs.password.value;
         const passwordCheck = this.refs.passwordCheck.value;
+        // check if passwords match
         if(temp === passwordCheck){
             var password = temp;
         }

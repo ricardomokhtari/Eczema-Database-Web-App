@@ -100,7 +100,7 @@ class UploadPage extends Component {
         }
 
         // perform arithmetic
-        const total = (Erythema + Edema + Excoriation + Lichenification) * AreaScore * multiplier;
+        const total = ((Erythema + Edema + Excoriation + Lichenification) * AreaScore * multiplier).toFixed(2);
 
         this.setState({score: total});
 
