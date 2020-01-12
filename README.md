@@ -24,6 +24,10 @@ Over-EASI was built with React, Bootstrap, Java and PostgreSQL.
 
 ![Image of App](https://github.com/ricardomokhtari/Over-EASI/blob/master/Images/Upload.png)
 
+### View page
+
+![Image of App](https://github.com/ricardomokhtari/Over-EASI/blob/master/Images/viewpage.png)
+
 ### New patient page
 
 ![Image of App](https://github.com/ricardomokhtari/Over-EASI/blob/master/Images/New_patient.png)
