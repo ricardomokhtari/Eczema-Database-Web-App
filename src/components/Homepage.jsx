@@ -11,7 +11,7 @@ import {
 import axios from 'axios';
 
 var serverURL = "https://servlet-1.herokuapp.com/"
-//var serverURL = "http://localhost:8080/LectureServlet/"
+// var serverURL = "http://localhost:8080/LectureServlet/"
 
 // Declare rows as a global variable to be used by all methods
 var rows = [];
@@ -46,6 +46,7 @@ class Homepage extends Component {
 
       // make an empty array
       var list = []
+      console.log(data);
 
       // since the data comes in as a string, we have to convert the
       // string to JSON to access the patient fields.
